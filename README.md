@@ -10,9 +10,17 @@ The implementation provides 4 classes:
  * Hierarchical Signatures (HSS). This system uses a sequence of LMS.
  * Persistent Hierarchical Signatures (PersHSS). The same as HSS except that the private key is stored in an encrypted file.
 
+## Installation
+```bash
+python3 -m pip install hsslms
+```
+
 ## Example Usage
 #### LM-OTS
 ```python
+from os import urandom
+from hsslms import LM_OTS_Priv
+
 # generate a one-time private key
 sk = LM_OTS_Priv(LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2, urandom(16), 0)
 # sign a message with the private key
@@ -24,6 +32,9 @@ vk.verify(b'abc', signature)
 ```
 #### LMS
 ```python
+from os import urandom
+from hsslms import LMS_Priv
+
 # generate a private key
 sk = LMS_Priv(LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10, LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W8)
 # sign a message with the private key, in total 2^10 signatures are available
@@ -36,6 +47,9 @@ vk.verify(b'abc', signature)
 
 #### HSS
 ```python
+from os import urandom
+from hsslms import HSS_Priv
+
 # generate a private key
 sk = HSS_Priv([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10]*2, LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W1)
 # sign a message with the private key, in total 2^20 signatures are available
@@ -52,12 +66,12 @@ The measurements are done on a Ryzen 5800X, where multiprocessing features are u
 #### Key Generation
 | Key-Type   | w     | Time[s]            | #Signatures   | Size of Signature   |
 |------------|-------|--------------------|--------------:|--------------------:|
-| H10        | 1/2/8 | 0.5 / 0.3 / 0.9    | 1024          | 8848 /
-| H15        | 1/2/8 | 15.7/9.5/23.3      | 32768         | 9008 /
-| H20        | 1/2/8 | - / - / 806        | 1048576       | - / - /
+| H10        | 1/2/8 | 0.5 / 0.3 / 0.9    | 1024          | 8848 / 4624 / 1456
+| H15        | 1/2/8 | 15.7/9.5/23.3      | 32768         | 9008 / 4784 / 1616
+| H20        | 1/2/8 | - / - / 806        | 1048576       |  - / - / 1776
 | H10/H10    | 1/2/8 | 1.4 / 0.7 / 3.2    | 1048576       | 17748 / 9300 / 2964
 | H10/H15    | 1/2/8 | 6.0 / 9.7 / 24.5   | 33554432      | 17908 / 9460 / 3124
-| H15/H15    | 1/2/8 | 12.9 / 14.0 / 50.8 | 1073741824    | 18068 / 9620 /
+| H15/H15    | 1/2/8 | 12.9 / 14.0 / 50.8 | 1073741824    | 18068 / 9620 / 3284
 
 
 #### Performance of Signature Generation:
