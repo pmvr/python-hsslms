@@ -22,7 +22,8 @@ def perf_keygen(lmstypecodes, otstypecode, num_cores):
 
 # Testing Performance of HSS
 num_cores = 6
-for w, lmots_alg in ((1, LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W1), (2, LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2), (8, LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W8)):
+for lmots_alg in LMOTS_ALGORITHM_TYPE:
+    w = lmots_alg.w
     print("Performance of HSS-LMS with w=%d:" % w)
     print("--------------------------------")
     
