@@ -8,32 +8,32 @@ Created on Thu Dec 23 09:14:46 2021
 """
 import unittest
 from itertools import product
-from os import urandom
+from secrets import token_bytes
 from binascii import a2b_hex
 
 import sys
-sys.path.append("../src")
+sys.path = ["../src"] + sys.path
 from hsslms import LM_OTS_Priv, LMOTS_ALGORITHM_TYPE, LMS_Priv, HSS_Priv, HSS_Pub, LMS_ALGORITHM_TYPE, INVALID, FAILURE
 
 class Test_LMS_OTS(unittest.TestCase):
 
     def test_lm_ots_typecodes_pass(self):
         for typecode in LMOTS_ALGORITHM_TYPE:
-            sk = LM_OTS_Priv(typecode, urandom(16), 0)
+            sk = LM_OTS_Priv(typecode, token_bytes(16), 0)
             signature = sk.sign(b'abc')
             vk = sk.gen_pub()
             self.assertIsNone(vk.verify(b'abc', signature), "Verify is not None.")
         
     def test_lm_ots_typecodes_fail(self):
         for typecode in LMOTS_ALGORITHM_TYPE:
-            sk = LM_OTS_Priv(typecode, urandom(16), 0)
+            sk = LM_OTS_Priv(typecode, token_bytes(16), 0)
             signature = sk.sign(b'abc')
             vk = sk.gen_pub()
             with self.assertRaises(INVALID):
                 vk.verify(b'', signature)
         
     def test_lm_ots_sign_failure(self):
-        sk = LM_OTS_Priv(LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2, urandom(16), 0)
+        sk = LM_OTS_Priv(LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2, token_bytes(16), 0)
         sk.sign(b'abc')
         with self.assertRaises(FAILURE):
             sk.sign(b'abc')

@@ -5,7 +5,7 @@ Created on Sat Jan  1 11:49:13 2022
 
 @author: mvr
 """
-from os import urandom
+from secrets import token_bytes
 from .utils import LMOTS_ALGORITHM_TYPE
 from .utils import INVALID, FAILURE
 from .utils import D_MESG, D_PBLC
@@ -51,16 +51,15 @@ class LM_OTS_Pub:
         if len(signature) != 4 + n * (p+1):
             raise INVALID
         C = signature[4:4+n]
-        y = [signature[4+n+i*n : 4+n+(i+1)*n] for i in range(p)]
         Q = H(self.I + self.q + D_MESG + C + message).digest()
-        z = []
+        Kc = H(self.I + self.q + D_PBLC)
         for i in range(p):
             a = coef(Q + cksm(Q, w, n, ls), i, w)
-            tmp = y[i]
+            tmp = signature[4+n+i*n : 4+n+(i+1)*n]  # y[i]
             for j in range(a, 2**w - 1):
                 tmp = H(self.I + self.q + u16str(i) + u8str(j) + tmp).digest()
-            z.append(tmp)
-        return H(self.I + self.q + D_PBLC + b''.join(z)).digest()  # Kc
+            Kc.update(tmp)  # z
+        return Kc.digest()  # Kc
         
     
     def verify(self, message, signature):
@@ -109,7 +108,7 @@ class LM_OTS_Priv:
         self.q = q
         self.H, self.n, self.w, self.p, self.ls = typecode.H, typecode.n, typecode.w, typecode.p, typecode.ls
         self.typecode = u32str(typecode.value)
-        self.x = [urandom(self.n) for _ in range(self.p)]
+        self.x = [token_bytes(self.n) for _ in range(self.p)]
         self.used = False
 
     def sign(self, message):
@@ -130,17 +129,17 @@ class LM_OTS_Priv:
         """
         if self.used == True:
             raise FAILURE
-        C = urandom(self.n)
-        y = []
+        C = token_bytes(self.n)
+        signature = self.typecode + C;
         Q = self.H(self.I + u32str(self.q) + D_MESG + C + message).digest()
         for i in range(self.p):
             a = coef(Q + cksm(Q, self.w, self.n, self.ls), i, self.w)
             tmp = self.x[i]
             for j in range(a):
                 tmp = self.H(self.I + u32str(self.q) + u16str(i) + u8str(j) + tmp).digest()
-            y.append(tmp)
+            signature += tmp  # y
         self.used = True
-        return self.typecode + C + b''.join(y)
+        return signature
 
     def gen_pub(self):
         """

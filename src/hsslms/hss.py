@@ -41,19 +41,16 @@ class HSS_Pub:
         if Nspk+1 != self.L:
             raise INVALID
         signature = signature[4:]
-        siglist = []
-        publist = []
-        for i in range(Nspk):
-            l = LMS_Pub.len_signature(signature)
-            siglist.append(signature[:l])
-            signature = signature[l:]
-            l = LMS_Pub.len_pubkey(signature)
-            publist.append(signature[:l])
-            signature = signature[l:]
         key = self.pub
         for i in range(Nspk):
-            key.verify(publist[i], siglist[i])
-            key = LMS_Pub(publist[i])
+            l = LMS_Pub.len_signature(signature)
+            lms_sig = signature[:l]
+            signature = signature[l:]
+            l = LMS_Pub.len_pubkey(signature)
+            lms_pub = signature[:l]
+            key.verify(lms_pub, lms_sig)
+            signature = signature[l:]
+            key = LMS_Pub(lms_pub)
         key.verify(message, signature)
 
 
@@ -114,11 +111,10 @@ class HSS_Priv:
             self.priv[i] = LMS_Priv(self.lmstypecodes[i], self.otstypecode)
             self.pub[i] = self.priv[i].gen_pub()
             self.sig[i-1] = self.priv[i-1].sign(self.pub[i].get_pubkey())
-        sig = self.priv[-1].sign(message)
-        signed_pub_key = []
+        signature = u32str(self.L-1)
         for i in range(self.L-1):
-            signed_pub_key.append(self.sig[i] + self.pub[i+1].get_pubkey())
-        return u32str(self.L-1) + b''.join(signed_pub_key) + sig
+            signature += self.sig[i] + self.pub[i+1].get_pubkey()  # signed_pub_key
+        return signature + self.priv[-1].sign(message)
 
     def gen_pub(self):
         """

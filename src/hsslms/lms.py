@@ -5,7 +5,8 @@ Created on Sat Jan  1 11:53:08 2022
 
 @author: mvr
 """
-from os import urandom, cpu_count
+from os import cpu_count
+from secrets import token_bytes
 from multiprocessing import Pool
 from .utils import LMOTS_ALGORITHM_TYPE, LMS_ALGORITHM_TYPE
 from .utils import INVALID, FAILURE
@@ -33,7 +34,10 @@ class LMS_Pub:
         self.H, self.m, self.h = self.pubtype.H, self.pubtype.m, self.pubtype.h
         if len(pubkey) != 24+self.m:
             raise INVALID
-        self.otspubtype = LMOTS_ALGORITHM_TYPE(int.from_bytes(pubkey[4:4+4], 'big'))
+        try:
+            self.otspubtype = LMOTS_ALGORITHM_TYPE(strTou32(pubkey[4:4+4]))
+        except ValueError:
+            raise INVALID
         self.I = pubkey[8:8+16]
         self.T1 = pubkey[24:]
         self.pubkey = pubkey
@@ -57,17 +61,17 @@ class LMS_Pub:
             raise INVALID
         if q >= 2**self.h or len(signature) != 12+n*(p+1)+self.m*self.h:
             raise INVALID
-        path = [signature[12+n*(p+1)+i*self.m:12+n*(p+1)+(i+1)*self.m] for i in range(self.h)]
         OTS_PUB = LM_OTS_Pub(lmots_signature[:4] + self.I + u32str(q)  + b'\x00'*n)
         Kc = OTS_PUB.algo4b(message, lmots_signature)
         node_num = 2**self.h + q
         tmp = self.H(self.I + u32str(node_num) + D_LEAF + Kc).digest()
         i = 0
         while node_num > 1:
+            path = signature[12+n*(p+1)+i*self.m:12+n*(p+1)+(i+1)*self.m]
             if node_num % 2 == 1:
-                tmp = self.H(self.I + u32str(node_num//2) + D_INTR + path[i] + tmp).digest()
+                tmp = self.H(self.I + u32str(node_num//2) + D_INTR + path + tmp).digest()
             else:
-                tmp = self.H(self.I + u32str(node_num//2) + D_INTR + tmp + path[i]).digest()
+                tmp = self.H(self.I + u32str(node_num//2) + D_INTR + tmp + path).digest()
             node_num >>= 1
             i += 1
         return tmp  # Tc
@@ -91,9 +95,15 @@ class LMS_Pub:
             raise INVALID
             
     def len_signature(signature):
+        if len(signature) < 8:
+            raise INVALID
         otssigtype = LMOTS_ALGORITHM_TYPE(strTou32(signature[4:4+4]))
         n, p = otssigtype.n, otssigtype.p
+        if len(signature) < 12+n*(p+1):
+            raise INVALID
         sigtype = LMS_ALGORITHM_TYPE(strTou32(signature[8+n*(p+1):12+n*(p+1)]))
+        if len(signature) < 12 + n*(p+1) + sigtype.m * sigtype.h:
+            raise INVALID
         return 12 + n*(p+1) + sigtype.m * sigtype.h
                 
             
@@ -112,9 +122,10 @@ class LMS_Priv:
     gen_pub
         computes the public key, i.e. an instance of LM_OTS_Pub
     """
-    def calc_K(x):
-        return x.gen_pub().K
-    def calc_hash(H, *l):
+    def calc_leafs(x, H, *l):
+        OTS_PUB_HASH = x.gen_pub().K
+        return H(b''.join(l) + OTS_PUB_HASH).digest()
+    def calc_knots(H, *l):
         return H(b''.join(l)).digest()
     
     def __init__(self, typecode, otstypecode, num_cores=None):
@@ -131,17 +142,14 @@ class LMS_Priv:
         self.typecode = typecode
         self.otstypecode = otstypecode
         self.H, self.m, self.h = self.typecode.H, self.typecode.m, self.typecode.h
-        self.I = urandom(16)
-        self.OTS_PRIV = []
-        for q in range(2**self.h):
-            self.OTS_PRIV.append(LM_OTS_Priv(self.otstypecode, self.I, q))
-        self.q = 0
-        self.T = [None]*(2**(self.h+1))
+        self.I = token_bytes(16)
         with Pool(num_cores) as p:
-            OTS_PUB_HASH = p.map(LMS_Priv.calc_K, self.OTS_PRIV)
-            self.T[2**self.h : 2**(self.h+1)] = p.starmap(LMS_Priv.calc_hash, ((self.H, self.I, u32str(r), D_LEAF, OTS_PUB_HASH[r-2**self.h]) for r in range(2**self.h, 2**(self.h+1))))
+            self.OTS_PRIV = p.starmap(LM_OTS_Priv, ((self.otstypecode, self.I, q) for q in range(2**self.h)))
+            self.T = [None]*(2**(self.h+1))
+            self.T[2**self.h : 2**(self.h+1)] = p.starmap(LMS_Priv.calc_leafs, ((self.OTS_PRIV[r-2**self.h], self.H, self.I, u32str(r), D_LEAF) for r in range(2**self.h, 2**(self.h+1))))
             for i in range(self.h-1, -1, -1):
-                self.T[2**i : 2**(i+1)] = p.starmap(LMS_Priv.calc_hash, ((self.H, self.I, u32str(r), D_INTR, self.T[2*r], self.T[2*r+1]) for r in range(2**i, 2**(i+1))))
+                self.T[2**i : 2**(i+1)] = p.starmap(LMS_Priv.calc_knots, ((self.H, self.I, u32str(r), D_INTR, self.T[2*r], self.T[2*r+1]) for r in range(2**i, 2**(i+1))))
+        self.q = 0
         
     def sign(self, message):
         """
@@ -162,12 +170,11 @@ class LMS_Priv:
         if self.q >= 2**self.h:
             raise FAILURE
         lmots_signature = self.OTS_PRIV[self.q].sign(message)
-        path = []
+        signature = u32str(self.q) + lmots_signature + u32str(self.typecode.value)
         r = 2**self.h + self.q
         for i in range(self.h):
-            path.append(self.T[r ^ 1])
+            signature += self.T[r ^ 1]
             r >>= 1
-        signature = u32str(self.q) + lmots_signature + u32str(self.typecode.value) + b''.join(path)
         self.q += 1
         return signature
         

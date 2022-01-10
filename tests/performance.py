@@ -11,8 +11,14 @@ https://www.rfc-editor.org/rfc/rfc8554.html
 import time
 import sys
 
-sys.path.append("../src")
+sys.path = ["../src"] + sys.path
 from hsslms import LMOTS_ALGORITHM_TYPE, HSS_Priv, LMS_ALGORITHM_TYPE
+
+def perf_keygen(lmstypecodes, otstypecode, num_cores):
+    start = time.time()
+    _ = HSS_Priv(lmstypecodes, otstypecode, num_cores)
+    return time.time() - start
+    
 
 # Testing Performance of HSS
 num_cores = 6
@@ -23,31 +29,18 @@ for w, lmots_alg in ((1, LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W1), (2, LMOTS_AL
     print("  Performance of Key Generation:")
     print("           %10s %15s" %('Time[s]', '#Signatures'))
     
-    start = time.time()
-    sk = HSS_Priv([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10], lmots_alg, num_cores)
-    end = time.time()
-    print("      H10: %10.2f %15d" % (end-start, 2**10))
-    start = time.time()
-    sk = HSS_Priv([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15], lmots_alg, num_cores)
-    end = time.time()
-    print("      H15: %10.2f %15d" % (end-start, 2**15))
-    if w == 8:
-        start = time.time()
-        sk = HSS_Priv([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H20], lmots_alg, num_cores)
-        end = time.time()
-        print("      H20: %10.2f %15d" % (end-start, 2**20))
-    start = time.time()
-    sk = HSS_Priv([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10,LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10], lmots_alg, num_cores)
-    end = time.time()
-    print("  H10/H10: %10.2f %15d" % (end-start, 2**10 * 2**10))
-    start = time.time()
-    sk = HSS_Priv([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10,LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15], lmots_alg, num_cores)
-    end = time.time()
-    print("  H10/H15: %10.2f %15d" % (end-start, 2**10 * 2**15))
-    start = time.time()
-    sk = HSS_Priv([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15,LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15], lmots_alg, num_cores)
-    end = time.time()
-    print("  H15/H15: %10.2f %15d" % (end-start, 2**15 * 2**15))
+    duration = perf_keygen([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10], lmots_alg, num_cores)
+    print("      H10: %10.2f %15d" % (duration, 2**10))
+    duration = perf_keygen([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15], lmots_alg, num_cores)
+    print("      H15: %10.2f %15d" % (duration, 2**15))
+    duration = perf_keygen([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H20], lmots_alg, num_cores)
+    print("      H20: %10.2f %15d" % (duration, 2**20))
+    duration = perf_keygen([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10,LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10], lmots_alg, num_cores)
+    print("  H10/H10: %10.2f %15d" % (duration, 2**10 * 2**10))
+    duration = perf_keygen([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10,LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15], lmots_alg, num_cores)
+    print("  H10/H15: %10.2f %15d" % (duration, 2**10 * 2**15))
+    duration = perf_keygen([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15,LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15], lmots_alg, num_cores)
+    print("  H15/H15: %10.2f %15d" % (duration, 2**15 * 2**15))
     
     print()
     print("  Performance of Signature Generation:")
