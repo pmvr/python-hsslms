@@ -10,9 +10,6 @@ import unittest
 from itertools import product
 from secrets import token_bytes
 from binascii import a2b_hex
-
-import sys
-sys.path = ["../src"] + sys.path
 from hsslms import LM_OTS_Priv, LMOTS_ALGORITHM_TYPE, LMS_Priv, HSS_Priv, HSS_Pub, LMS_ALGORITHM_TYPE, INVALID, FAILURE
 
 class Test_LMS_OTS(unittest.TestCase):

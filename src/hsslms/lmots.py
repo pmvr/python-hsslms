@@ -1,10 +1,9 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Jan  1 11:49:13 2022
+"""LM-OTS One-Time Signatures
 
-@author: mvr
+For reference see RFC 8554, section 4.
 """
+import io
 from secrets import token_bytes
 from .utils import LMOTS_ALGORITHM_TYPE
 from .utils import INVALID, FAILURE
@@ -13,21 +12,16 @@ from .utils import coef, cksm, u16str, u8str, u32str
 
 
 class LM_OTS_Pub:
-    """
-    A class used to hold the public key of Leighton-Micali One-Time-Signatures (LMOTS)
-
-    Methods
-    -------
-    verify(message, signature)
-        tries to verify the signature of a message with the public key associated with the class
+    """A class used to hold the public key of LM-OTS One-Time Signatures (LMOTS)
+    
+    For a reference see RFC 8554, section 4.
     """
     
     def __init__(self, pubkey):
-        """
-        Parameters
-        ----------
-        pubkey : bstr
-            typecode || I || q || K
+        """Constructor for LMOTS Public Keys
+
+        Args:
+            pubkey (bytes): typecode || I || q || K
         """
         try:
             self.pubtype = LMOTS_ALGORITHM_TYPE(int.from_bytes(pubkey[:4], 'big'))
@@ -41,7 +35,7 @@ class LM_OTS_Pub:
         self.K = pubkey[24:]
         self.pubkey = pubkey
         
-    def algo4b(self, message, signature):
+    def _algo4b(self, message, signature):
         if len(signature) < 4:
             raise INVALID
         sigtype = LMOTS_ALGORITHM_TYPE(int.from_bytes(signature[:4], 'big'))
@@ -51,10 +45,26 @@ class LM_OTS_Pub:
         if len(signature) != 4 + n * (p+1):
             raise INVALID
         C = signature[4:4+n]
-        Q = H(self.I + self.q + D_MESG + C + message).digest()
+        if type(message) is bytes:
+            Q = H(self.I + self.q + D_MESG + C + message)
+        elif type(message) is io.BufferedReader:
+            Q = H(self.I + self.q + D_MESG + C )
+            try:
+                while True:
+                    buffer = message.read(1024**2)
+                    Q.update(buffer)
+                    if len(buffer) < 1024**2:
+                        break
+                message.close()
+            except IOError:
+                raise FAILURE("Error. Cannot read message.")
+        else:
+            raise FAILURE("Invalid message type.")
+        Q = Q.digest()
+        Qa = Q + cksm(Q, w, n, ls)
         Kc = H(self.I + self.q + D_PBLC)
         for i in range(p):
-            a = coef(Q + cksm(Q, w, n, ls), i, w)
+            a = coef(Qa, i, w)
             tmp = signature[4+n+i*n : 4+n+(i+1)*n]  # y[i]
             for j in range(a, 2**w - 1):
                 tmp = H(self.I + self.q + u16str(i) + u8str(j) + tmp).digest()
@@ -63,20 +73,19 @@ class LM_OTS_Pub:
         
     
     def verify(self, message, signature):
-        """
-        Tries to verify the signature of a message with the public key associated with the class.
+        """Signature Verification of LMOTS
         
-        Parameters
-        ----------
-        message : bstr
-        signature : bstr
+        Tries to verify the signature of a message with the public key associated
+        with the class.
         
-        Raises
-        ------
-        INVALID
-            If signature is invalid.
+        Args:
+            message (bytes, BufferedReader): Message to be verified with `signature`
+            signature (bytes): Signature belonging to the `message`
+        
+        Raises:
+            INVALID: If signature is invalid.
         """
-        Kc = self.algo4b(message, signature)
+        Kc = self._algo4b(message, signature)
         if Kc != self.K:
             raise INVALID
                 
@@ -85,24 +94,20 @@ class LM_OTS_Pub:
 
         
 class LM_OTS_Priv:
-    """
-    A class used to generate the private key and derive the public key of Leighton-Micali One-Time-Signatures (LMOTS)
-
-    Methods
-    -------
-    sign(message)
-        signs the message with the private key associated with the class
-    gen_pub
-        computes the public key, i.e. an instance of LM_OTS_Pub
+    """A class used to hold the private key of LM-OTS One-Time Signatures (LMOTS)
+    
+    For a reference see RFC 8554, section 4.
+    
+    This class can be used to generate the belonging public key `LM_OTS_Pub`.
     """
     
     def __init__(self, typecode, I, q):
-        """
-        Parameters
-        ----------
-        typecode : LMOTS_ALGORITHM_TYPE
-        I        : bstr (16 random bytes)
-        q        : int
+        """Constructor for LMOTS Private Keys
+        
+        Args:
+            typecode (LMOTS_ALGORITHM_TYPE): Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types
+            I (bytes): 16 random bytes
+            q (int): 32-bit number / no.
         """
         self.I = I
         self.q = q
@@ -112,28 +117,43 @@ class LM_OTS_Priv:
         self.used = False
 
     def sign(self, message):
-        """
-        Signs the message with the private key associated with the class.
+        """Signature Generation of LMOTS
         
-        Parameters
-        ----------
-        message : bstr
+        Signs a message with the private key associated with the class.
+        
+        Args:
+            message (bytes, BufferedReader): Message to be signed
         
         Raises:
-        FAILURE
-            if a signature has already been computed
+            FAILURE: If a signature has already been computed, or for other
+                technical reason
         
-        Returns
-        ------
-        signature
+        Returns:
+            bytes: The signature to `message`.
         """
         if self.used == True:
-            raise FAILURE
+            raise FAILURE("Private key has already been used for signing.")
         C = token_bytes(self.n)
         signature = self.typecode + C;
-        Q = self.H(self.I + u32str(self.q) + D_MESG + C + message).digest()
+        if type(message) is bytes:
+            Q = self.H(self.I + u32str(self.q) + D_MESG + C + message)
+        elif type(message) is io.BufferedReader:
+            Q = self.H(self.I + u32str(self.q) + D_MESG + C)
+            try:
+                while True:
+                    buffer = message.read(1024**2)
+                    Q.update(buffer)
+                    if len(buffer) < 1024**2:
+                        break
+                message.close()
+            except IOError:
+                raise FAILURE("Error. Cannot read message.")
+        else:
+            raise FAILURE("Invalid message type.")
+        Q = Q.digest()
+        Qa = Q + cksm(Q, self.w, self.n, self.ls)
         for i in range(self.p):
-            a = coef(Q + cksm(Q, self.w, self.n, self.ls), i, self.w)
+            a = coef(Qa, i, self.w)
             tmp = self.x[i]
             for j in range(a):
                 tmp = self.H(self.I + u32str(self.q) + u16str(i) + u8str(j) + tmp).digest()
@@ -142,12 +162,10 @@ class LM_OTS_Priv:
         return signature
 
     def gen_pub(self):
-        """
-        Computes the public key associated with the private key in this class.
+        """Computes the public key associated with the private key in this class.
         
-        Returns
-        ------
-        an instance of LM_OTS_Pub
+        Returns:
+            LM_OTS_Pub: The public key belonging to this private key.
         """
         u32str_q = u32str(self.q)
         K = self.H(self.I + u32str_q + D_PBLC)
@@ -157,6 +175,7 @@ class LM_OTS_Priv:
                 tmp = self.H(self.I + u32str_q + i + j + tmp).digest()
             K.update(tmp)
         return LM_OTS_Pub(self.typecode + self.I + u32str_q  + K.digest())
+    
 
     def __repr__(self):
         return str(self.typecode + self.I + u32str(self.q) + b''.join(self.x))

@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Jan  1 11:53:08 2022
+"""Leighton-Micali Signatures
 
-@author: mvr
+For reference see RFC 8554, section 5.
 """
 from os import cpu_count
 from secrets import token_bytes
@@ -16,15 +14,19 @@ from .lmots import LM_OTS_Priv, LM_OTS_Pub
 
 
 class LMS_Pub:
-    """
-    A class used to hold the public key of Leighton-Micali Signatures (LMS)
-
-    Methods
-    -------
-    verify(message, signature)
-        tries to verify the signature of a message with the public key associated with the class
+    """A class used to hold the public key of Leighton-Micali Signatures (LMS)
+    
+    For a reference see RFC 8554, section 5.
     """
     def __init__(self, pubkey):
+        """Constructor for LMS Public Keys
+
+        Args:
+            pubkey (bytes): u32str(type) || u32str(otstype) || I || T[1]
+            
+        Raises:
+            INVALID: If the public is invalid.
+        """
         if len(pubkey) < 8:
             raise INVALID
         try:
@@ -42,10 +44,26 @@ class LMS_Pub:
         self.T1 = pubkey[24:]
         self.pubkey = pubkey
         
-    def len_pubkey(pubkey):
-        return 24 + LMS_ALGORITHM_TYPE(strTou32(pubkey[:4])).m
+    def _len_pubkey(pubkey):
+        """Computes the correct length of a given public key
         
-    def algo6b(self, message, signature):
+        Args:
+            pubkey (bytes): Representation of a public key
+            
+        Raises:
+            INVALID: If the byte string is malformed.
+        
+        Returns:
+            int: Length of the public key.
+        """
+        if len(pubkey) < 4:
+            raise INVALID('Malformed public key.')
+        try:
+            return 24 + LMS_ALGORITHM_TYPE(strTou32(pubkey[:4])).m
+        except:
+            raise INVALID('Malformed public key.')
+        
+    def _algo6b(self, message, signature):
         if len(signature) < 8:
             raise INVALID
         q = strTou32(signature[:4])
@@ -62,7 +80,7 @@ class LMS_Pub:
         if q >= 2**self.h or len(signature) != 12+n*(p+1)+self.m*self.h:
             raise INVALID
         OTS_PUB = LM_OTS_Pub(lmots_signature[:4] + self.I + u32str(q)  + b'\x00'*n)
-        Kc = OTS_PUB.algo4b(message, lmots_signature)
+        Kc = OTS_PUB._algo4b(message, lmots_signature)
         node_num = 2**self.h + q
         tmp = self.H(self.I + u32str(node_num) + D_LEAF + Kc).digest()
         i = 0
@@ -77,24 +95,33 @@ class LMS_Pub:
         return tmp  # Tc
         
     def verify(self, message, signature):
-        """
-        Tries to verify the signature of a message with the public key associated with the class.
+        """Signature Verification of LMS
+
+        Tries to verify the signature of a message with the public key associated
+        with the class.
         
-        Parameters
-        ----------
-        message : bstr
-        signature : bstr
+        Args:
+            message (bytes, BufferedReader): Message to be verified with `signature`
+            signature (bytes): Signature belonging to the `message`
         
-        Raises
-        ------
-        INVALID
-            If signature is invalid.
+        Raises:
+            INVALID: If signature is invalid.
         """
-        Tc = self.algo6b(message, signature)
+        Tc = self._algo6b(message, signature)
         if Tc != self.T1:
             raise INVALID
             
-    def len_signature(signature):
+    def _len_signature(signature):
+        """Computes the correct length of a signature in an even longer byte string
+        
+        Args:
+            signature (bytes): Signature embedded in an even longer byte string.
+        Raises:
+            INVALID: If the signature is malformed.
+        
+        Returns:
+            int: the length of a signature
+        """
         if len(signature) < 8:
             raise INVALID
         otssigtype = LMOTS_ALGORITHM_TYPE(strTou32(signature[4:4+4]))
@@ -109,33 +136,34 @@ class LMS_Pub:
             
     def get_pubkey(self):
         return self.pubkey
+    
+    def info(self):
+        return """\
+lmotstype = {self.otspubtype.name}
+lmstype = {self.pubtype.name}
+"""
         
 
 class LMS_Priv:
+    """A class used to hold the private key of Leighton-Micali Signatures (LMS)
+    
+    For a reference see RFC 8554, section 5.
+    
+    This class can be used to generate the belonging public key `LMS_Pub`.
     """
-    A class used to generate the private key and derive the public key of Leighton-Micali Signatures (LMS)
-
-    Methods
-    -------
-    sign(message)
-        signs the message with the private key associated with the class
-    gen_pub
-        computes the public key, i.e. an instance of LM_OTS_Pub
-    """
-    def calc_leafs(x, H, *l):
+    def _calc_leafs(x, H, *l):
         OTS_PUB_HASH = x.gen_pub().K
         return H(b''.join(l) + OTS_PUB_HASH).digest()
-    def calc_knots(H, *l):
+    def _calc_knots(H, *l):
         return H(b''.join(l)).digest()
     
     def __init__(self, typecode, otstypecode, num_cores=None):
-        """
-        Parameters
-        ----------
-        typecode    : LMS_ALGORITHM_TYPE
-        otstypecode : LMOTS_ALGORITHM_TYPE
-        num_cores   : int | None (default)
-            the number of CPU cores used for key generation, None=all cores
+        """Constructor for LMS Private Keys
+        
+        Args:
+            typecode (LMS_ALGORITHM_TYPE): Enumeration of Leighton-Micali Signatures (LMS) algorithm types
+            otstypecode (LMOTS_ALGORITHM_TYPE): Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types
+            num_cores (int, None, optional): the number of CPU cores used for key generation, None=all cores
         """
         if num_cores is None:
             num_cores = cpu_count()
@@ -146,29 +174,28 @@ class LMS_Priv:
         with Pool(num_cores) as p:
             self.OTS_PRIV = p.starmap(LM_OTS_Priv, ((self.otstypecode, self.I, q) for q in range(2**self.h)))
             self.T = [None]*(2**(self.h+1))
-            self.T[2**self.h : 2**(self.h+1)] = p.starmap(LMS_Priv.calc_leafs, ((self.OTS_PRIV[r-2**self.h], self.H, self.I, u32str(r), D_LEAF) for r in range(2**self.h, 2**(self.h+1))))
+            self.T[2**self.h : 2**(self.h+1)] = p.starmap(LMS_Priv._calc_leafs, ((self.OTS_PRIV[r-2**self.h], self.H, self.I, u32str(r), D_LEAF) for r in range(2**self.h, 2**(self.h+1))))
             for i in range(self.h-1, -1, -1):
-                self.T[2**i : 2**(i+1)] = p.starmap(LMS_Priv.calc_knots, ((self.H, self.I, u32str(r), D_INTR, self.T[2*r], self.T[2*r+1]) for r in range(2**i, 2**(i+1))))
+                self.T[2**i : 2**(i+1)] = p.starmap(LMS_Priv._calc_knots, ((self.H, self.I, u32str(r), D_INTR, self.T[2*r], self.T[2*r+1]) for r in range(2**i, 2**(i+1))))
         self.q = 0
         
     def sign(self, message):
-        """
-        Signs the message with the private key associated with the class.
+        """Signature Generation of LMS
         
-        Parameters
-        ----------
-        message : bstr
+        Signs a message with the private key associated with the class.
+        
+        Args:
+            message (bytes, BufferedReader): Message to be signed
         
         Raises:
-        FAILURE
-            if private keys are exhausted
+            FAILURE: If a signature has already been computed, or for other
+                technical reason
         
-        Returns
-        ------
-        signature
+        Returns:
+            bytes: The signature to `message`.
         """
         if self.q >= 2**self.h:
-            raise FAILURE
+            raise FAILURE("Private keys exhausted.")
         lmots_signature = self.OTS_PRIV[self.q].sign(message)
         signature = u32str(self.q) + lmots_signature + u32str(self.typecode.value)
         r = 2**self.h + self.q
@@ -179,15 +206,20 @@ class LMS_Priv:
         return signature
         
     def gen_pub(self):
-        """
-        Computes the public key associated with the private key in this class.
+        """Computes the public key associated with the private key in this class.
         
-        Returns
-        ------
-        an instance of LMS_Pub
+        Returns:
+            LMS_Pub: The public key belonging to this private key.
         """
         return LMS_Pub(u32str(self.typecode.value) + u32str(self.otstypecode.value) + self.I + self.T[1])
     
     def get_avail_signatures(self):
+        """Computes the numbers of availalbe signatures.
+        
+        Every invokation of the 'sign'-Method reduces this number by one.
+        
+        Returns:
+            int: The remaining number of signatures that can be generated.
+        """
         return len(self.OTS_PRIV) - self.q
     

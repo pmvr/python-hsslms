@@ -7,12 +7,18 @@ Created on Sat Jan  1 20:00:55 2022
 """
 import os
 import pickle
-from hashlib import pbkdf2_hmac
-from hashlib import sha256
-import hmac
-import subprocess
+from .restricted_unpickler import restricted_loads
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+from cryptography.exceptions import InvalidTag
 from .hss import HSS_Priv
 from .utils import FAILURE
+from . import __version__
+
+
+def kdf(salt, password):
+    return PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=salt, iterations=390000).derive(password)
 
 
 class PersHSS_Priv(HSS_Priv):
@@ -32,7 +38,8 @@ class PersHSS_Priv(HSS_Priv):
     from_file
         loads a private key, i.e. HSS_Priv, from a file
     """
-    def __init__(self, lmstypecodes, otstypecode, filename, password, frequence):
+    FILEHEADER = b'PersHSS_Priv_v\x00' + __version__.encode('utf-8')
+    def __init__(self, lmstypecodes, otstypecode, filename, password, frequence, num_cores):
         """
         Parameters
         ----------
@@ -42,11 +49,13 @@ class PersHSS_Priv(HSS_Priv):
         password     : bstr, password to sign and encrypt the file
         frequence    : frequnce at which the key is stored to a file
         """
-        super().__init__(lmstypecodes, otstypecode)
+        super().__init__(lmstypecodes, otstypecode, num_cores)
         self.filename = filename
         self.password = password
         self.frequence = frequence
         self.sign_count = 0
+        self.salt = os.urandom(16);
+        self.key = kdf(self.salt, password)
         
     def sign(self, message):
         """
@@ -78,14 +87,23 @@ class PersHSS_Priv(HSS_Priv):
             os.rename(self.filename, self.filename + '.bak')
         except FileNotFoundError:
             pass
-        password = self.password
-        self.password = b''
-        salt = os.urandom(16)
-        dkey = pbkdf2_hmac('sha256', password, salt, 100000)
         data = pickle.dumps(self)
-        mac = hmac.new(dkey, msg=data, digestmod=sha256).digest()
-        subprocess.run(["openssl", "enc", "-aes-256-cbc", "-pbkdf2", "-k", password.decode('utf8'), "-out", self.filename], input=salt+mac+data)
-
+        aesgcm = AESGCM(self.key)
+        nonce = os.urandom(12)
+        try:
+            with open(self.filename, 'wb') as fout:
+                fout.write(PersHSS_Priv.FILEHEADER)
+                fout.write(self.salt)
+                fout.write(nonce)
+                fout.write(aesgcm.encrypt(nonce, data, PersHSS_Priv.FILEHEADER))
+        except IOError:
+            raise FAILURE("File %s cannot be saved." % self.filename)
+        try:
+            os.remove(self.filename + '.bak')
+        except OSError:
+            pass
+            
+        
     def from_file(filename, password):
         """
         A key, HSS_Priv, is loaded from a password-protected file.
@@ -105,18 +123,34 @@ class PersHSS_Priv(HSS_Priv):
         ------
         HSS_Priv
         """
-        cp = subprocess.run(["openssl", "enc", "-aes-256-cbc", "-d", "-pbkdf2", "-k", password.decode('utf8'), "-in", filename], capture_output=True)
-        if cp.returncode != 0:
-            raise FAILURE('Error decrypting file.')
-        salt = cp.stdout[:16]
-        mac = cp.stdout[16:16+32]
-        data = cp.stdout[16+32:]
-        dkey = pbkdf2_hmac('sha256', password, salt, 100000)
-        if hmac.compare_digest(mac, hmac.new(dkey, msg=data, digestmod=sha256).digest()) == False:
-            raise FAILURE('HMAC verification failed.')
-        sk = pickle.loads(data)
-        sk.password = password
+        try:
+            with open(filename, 'rb') as fin:
+                fh = fin.read(len(PersHSS_Priv.FILEHEADER))
+                if fh != PersHSS_Priv.FILEHEADER:
+                    raise FAILURE("Invalid file type.")
+                salt = fin.read(16)
+                if len(salt) < 16:
+                    raise FAILURE("Invalid file.")
+                key = kdf(salt, password)
+                aesgcm = AESGCM(key)
+                nonce = fin.read(12)
+                if len(nonce) < 12:
+                    raise FAILURE("Invalid file.")
+                data = aesgcm.decrypt(nonce, fin.read(), fh)
+                sk = restricted_loads(data)
+                if not type(sk) is PersHSS_Priv:
+                    raise FAILURE("Wrong Object Type.")
+        except InvalidTag:
+            raise FAILURE("Wrong password.")
+        except IOError:
+            raise FAILURE("File %s cannot be read." % filename)
+        except pickle.PickleError as e:
+            print(e)
+            raise FAILURE("Cannot load private key.")
         # skip next signatures
-        for _ in range(sk.frequence):
+        for _ in range(sk.frequence-1):
             sk.sign(b'')
         return sk
+
+
+

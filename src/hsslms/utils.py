@@ -13,7 +13,7 @@ class INVALID(Exception):
     pass
 
 class FAILURE(Exception):
-    """Exception if no private key is left to sign."""
+    """Exception for general technical failures , e.g. if no private key is left to sign."""
     pass
 
 def u32str(i):
@@ -42,16 +42,14 @@ D_INTR = u16str(0x8383)
 
 
 class LMOTS_ALGORITHM_TYPE(Enum):
-    """
-    Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types, see rfc8554.
+    """Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types, see rfc8554.
     
-    Attributes
-    ----------
-    H : Hashfunction
-    n : Outputlength of the hashfunction
-    w : number of simultanious signes bits
-    p : internal dependent parameter
-    ls : internal dependent parameter
+    Attributes:
+        H: Hashfunction
+        n (int): Outputlength of the hashfunction
+        w (int): number of simultanious signes bits
+        p (int): internal dependent parameter
+        ls (int): internal dependent parameter
     """
     LMOTS_SHA256_N32_W1  = 1
     LMOTS_SHA256_N32_W2  = 2
@@ -75,14 +73,12 @@ class LMOTS_ALGORITHM_TYPE(Enum):
 
 
 class LMS_ALGORITHM_TYPE(Enum):
-    """
-    Enumeration of Leighton-Micali Signatures (LMS) algorithm types, see rfc8554.
+    """Enumeration of Leighton-Micali Signatures (LMS) algorithm types, see rfc8554.
     
-    Attributes
-    ----------
-    H : Hashfunction
-    m : Outputlength of the hashfunction
-    h : height of the tree
+    Attributes:
+        H: Hashfunction
+        m (int): Outputlength of the hashfunction
+        h (int): height of the tree
     """
     LMS_SHA256_M32_H5  = 5
     LMS_SHA256_M32_H10 = 6

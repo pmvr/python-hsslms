@@ -9,9 +9,6 @@ https://www.rfc-editor.org/rfc/rfc8554.html
 """
 
 import time
-import sys
-
-sys.path = ["../src"] + sys.path
 from hsslms import LMOTS_ALGORITHM_TYPE, HSS_Priv, LMS_ALGORITHM_TYPE
 
 def perf_keygen(lmstypecodes, otstypecode, num_cores):
