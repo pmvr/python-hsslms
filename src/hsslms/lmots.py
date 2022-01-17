@@ -15,14 +15,12 @@ class LM_OTS_Pub:
     """A class used to hold the public key of LM-OTS One-Time Signatures (LMOTS)
     
     For a reference see RFC 8554, section 4.
+
+    Args:
+        pubkey (bytes): typecode || I || q || K
     """
     
     def __init__(self, pubkey):
-        """Constructor for LMOTS Public Keys
-
-        Args:
-            pubkey (bytes): typecode || I || q || K
-        """
         try:
             self.pubtype = LMOTS_ALGORITHM_TYPE(int.from_bytes(pubkey[:4], 'big'))
         except ValueError:
@@ -99,16 +97,14 @@ class LM_OTS_Priv:
     For a reference see RFC 8554, section 4.
     
     This class can be used to generate the belonging public key `LM_OTS_Pub`.
+
+    Args:
+        typecode (LMOTS_ALGORITHM_TYPE): Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types
+        I (bytes): 16 random bytes
+        q (int): 32-bit number / no.
     """
     
     def __init__(self, typecode, I, q):
-        """Constructor for LMOTS Private Keys
-        
-        Args:
-            typecode (LMOTS_ALGORITHM_TYPE): Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types
-            I (bytes): 16 random bytes
-            q (int): 32-bit number / no.
-        """
         self.I = I
         self.q = q
         self.H, self.n, self.w, self.p, self.ls = typecode.H, typecode.n, typecode.w, typecode.p, typecode.ls

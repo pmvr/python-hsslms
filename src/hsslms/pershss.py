@@ -22,33 +22,21 @@ def kdf(salt, password):
 
 
 class PersHSS_Priv(HSS_Priv):
-    """
-    A class derived from HSS_Priv. It is used to generate the private key and
+    """A class derived from HSS_Priv.
+    
+    It is used to generate the private key and
     derive the public key of a Hierarchical Signature System (HSS)
     The private key is signed and stored in an encrypted file.
 
-    Methods
-    -------
-    sign(message)
-        signs the message with the private key associated with the class
-    gen_pub
-        computes the public key, i.e. an instance of HSS_Pub
-    save
-        saves the private key to a file.
-    from_file
-        loads a private key, i.e. HSS_Priv, from a file
+    Args:
+        lmstypecodes: List of LMS_ALGORITHM_TYPE
+        otstypecode: LMOTS_ALGORITHM_TYPE
+        filename (str): holds the name of the file to store the key
+        password (bytes): password to sign and encrypt the file
+        frequence (int): frequnce at which the key is stored to a file
     """
     FILEHEADER = b'PersHSS_Priv_v\x00' + __version__.encode('utf-8')
     def __init__(self, lmstypecodes, otstypecode, filename, password, frequence, num_cores):
-        """
-        Parameters
-        ----------
-        lmstypecodes : List of LMS_ALGORITHM_TYPE
-        otstypecode  : LMOTS_ALGORITHM_TYPE
-        filename     : str, holds the name of the file to store the key
-        password     : bstr, password to sign and encrypt the file
-        frequence    : frequnce at which the key is stored to a file
-        """
         super().__init__(lmstypecodes, otstypecode, num_cores)
         self.filename = filename
         self.password = password
@@ -58,20 +46,19 @@ class PersHSS_Priv(HSS_Priv):
         self.key = kdf(self.salt, password)
         
     def sign(self, message):
-        """
-        Signs the message with the private key associated with the class.
+        """Signs the message with the private key associated with the class.
+        
         The key is automatically stored to disk after frequnce signatures.        
-        Parameters
-        ----------
-        message : bstr
+
+        Args:
+            message (bytes, BufferedReader): Message to be signed
         
         Raises:
-        FAILURE
-            if private keys are exhausted
+            FAILURE: If a signature has already been computed, or for other
+                technical reason
         
-        Returns
-        ------
-        signature
+        Returns:
+            bytes: The signature to `message`.
         """
         signature = super().sign(message)
         self.sign_count += 1
@@ -80,8 +67,7 @@ class PersHSS_Priv(HSS_Priv):
         return signature
         
     def save(self):
-        """
-        The key is saved.
+        """The key is saved.
         """
         try:
             os.rename(self.filename, self.filename + '.bak')
@@ -105,23 +91,20 @@ class PersHSS_Priv(HSS_Priv):
             
         
     def from_file(filename, password):
-        """
-        A key, HSS_Priv, is loaded from a password-protected file.
+        """A key, HSS_Priv, is loaded from a password-protected file.
+        
         Frequnce signatures are skipped to ensure that no private key is used
         more than once.
         
-        Parameters
-        ----------
-        filename : str, name of the file
-        password : bstr
+        Args:
+            filename (str): name of the file
+            password (bytes): password of the file
         
         Raises:
-        FAILURE
-            if the key cannot be loaded
+            FAILURE: if the key cannot be loaded
         
-        Returns
-        ------
-        HSS_Priv
+        Returns:
+            HSS_Priv
         """
         try:
             with open(filename, 'rb') as fin:

@@ -17,16 +17,14 @@ class LMS_Pub:
     """A class used to hold the public key of Leighton-Micali Signatures (LMS)
     
     For a reference see RFC 8554, section 5.
+
+    Args:
+        pubkey (bytes): u32str(type) || u32str(otstype) || I || T[1]
+        
+    Raises:
+        INVALID: If the public is invalid.
     """
     def __init__(self, pubkey):
-        """Constructor for LMS Public Keys
-
-        Args:
-            pubkey (bytes): u32str(type) || u32str(otstype) || I || T[1]
-            
-        Raises:
-            INVALID: If the public is invalid.
-        """
         if len(pubkey) < 8:
             raise INVALID
         try:
@@ -150,6 +148,11 @@ class LMS_Priv:
     For a reference see RFC 8554, section 5.
     
     This class can be used to generate the belonging public key `LMS_Pub`.
+
+    Args:
+        typecode (LMS_ALGORITHM_TYPE): Enumeration of Leighton-Micali Signatures (LMS) algorithm types
+        otstypecode (LMOTS_ALGORITHM_TYPE): Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types
+        num_cores (int, None, optional): the number of CPU cores used for key generation, None=all cores
     """
     def _calc_leafs(x, H, *l):
         OTS_PUB_HASH = x.gen_pub().K
@@ -158,13 +161,6 @@ class LMS_Priv:
         return H(b''.join(l)).digest()
     
     def __init__(self, typecode, otstypecode, num_cores=None):
-        """Constructor for LMS Private Keys
-        
-        Args:
-            typecode (LMS_ALGORITHM_TYPE): Enumeration of Leighton-Micali Signatures (LMS) algorithm types
-            otstypecode (LMOTS_ALGORITHM_TYPE): Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types
-            num_cores (int, None, optional): the number of CPU cores used for key generation, None=all cores
-        """
         if num_cores is None:
             num_cores = cpu_count()
         self.typecode = typecode

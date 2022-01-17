@@ -14,16 +14,14 @@ class HSS_Pub:
     This hierarchical scheme uses LMS as a component.
     
     For a reference see RFC 8554, section 6.
+
+    Args:
+        pubkey (bytes): u32str(L) || LMS Public Key[0]
+        
+    Raises:
+        INVALID: If the public is invalid.
     """
     def __init__(self, pubkey):
-        """Constructor for HSS Public Keys
-
-        Args:
-            pubkey (bytes): u32str(L) || LMS Public Key[0]
-            
-        Raises:
-            INVALID: If the public is invalid.
-        """
         if len(pubkey) < 4:
             raise INVALID
         self.L = strTou32(pubkey[:4])
@@ -72,16 +70,14 @@ class HSS_Priv:
     For a reference see RFC 8554, section 6.
     
     This class can be used to generate the belonging public key `HSS_Pub`.
+
+    Args:
+        lmstypecodes (:obj:`list` of :obj:`LMS_ALGORITHM_TYPE`): List of enumeration of Leighton-Micali Signatures (LMS) algorithm types
+        otstypecode (LMOTS_ALGORITHM_TYPE): Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types
+        num_cores (int, None, optional): the number of CPU cores used for key generation, None=all cores
     """
     
     def __init__(self, lmstypecodes, otstypecode, num_cores=None):
-        """Constructor for HSS Private Keys
-        
-        Args:
-            lmstypecodes (:obj:`list` of :obj:`LMS_ALGORITHM_TYPE`): List of enumeration of Leighton-Micali Signatures (LMS) algorithm types
-            otstypecode (LMOTS_ALGORITHM_TYPE): Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types
-            num_cores (int, None, optional): the number of CPU cores used for key generation, None=all cores
-        """
         self.lmstypecodes = lmstypecodes
         self.otstypecode = otstypecode
         self.L = len(lmstypecodes)
