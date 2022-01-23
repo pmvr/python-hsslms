@@ -22,7 +22,7 @@ def main():
     parser_keygen.add_argument('--lms', choices=('LMS_SHA256_M32_H5', 'LMS_SHA256_M32_H10', 'LMS_SHA256_M32_H15', 'LMS_SHA256_M32_H20', 'LMS_SHA256_M32_H25'), dest='lms', nargs='+', required=True, help='lms parameter set')
     parser_keygen.add_argument('--out', '-o', help='filename of private key, ".pub" is appended to the filename of the pubklic key', required=True, dest='out')
     parser_keygen.add_argument('--password', '-p', help='password to encrypt the private key', required=False, dest='password')
-    parser_keygen.add_argument('--cores', '-c', help='numer of cpu cores for computation (default=2)', type=int, default=2, choices=range(1,cpu_count()+1), required=False, dest='num_cores')
+    parser_keygen.add_argument('--cores', '-c', help='number of cpu cores for computation (default=2)', type=int, default=2, choices=range(1,cpu_count()+1), required=False, dest='num_cores')
     
     parser_keygen = subparsers.add_parser('pubkey-gen', description='generate the public form a private key')
     parser_keygen.add_argument('--in', '-i', help='filename of private key', required=True, dest='infile')

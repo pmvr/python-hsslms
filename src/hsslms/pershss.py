@@ -39,7 +39,6 @@ class PersHSS_Priv(HSS_Priv):
     def __init__(self, lmstypecodes, otstypecode, filename, password, frequence, num_cores):
         super().__init__(lmstypecodes, otstypecode, num_cores)
         self.filename = filename
-        self.password = password
         self.frequence = frequence
         self.sign_count = 0
         self.salt = os.urandom(16);
