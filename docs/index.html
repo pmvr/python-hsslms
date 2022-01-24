@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to HssLms’s documentation! &mdash; HssLms 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="src" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> HssLms
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">HssLms</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Welcome to HssLms’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-hsslms-s-documentation">
+<h1>Welcome to HssLms’s documentation!<a class="headerlink" href="#welcome-to-hsslms-s-documentation" title="Permalink to this headline"></a></h1>
+<p>This is an implementation of Leighton-Micali Hash-Based Signatures in Python according to <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc8554.html">RFC 8554</a>.</p>
+<p>The implementation is meant as a reference and for educational purposes.</p>
+<dl class="simple">
+<dt>The module  <a class="reference internal" href="hsslms.html#module-hsslms" title="hsslms"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hsslms</span></code></a> provides 4 classes:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="hsslms.html#module-hsslms.lmots" title="hsslms.lmots"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hsslms.lmots</span></code></a>: LM-OTS One-Time Signatures. These are one-time signatures; each private key MUST be used at most one time to sign a message.</p></li>
+<li><p><a class="reference internal" href="hsslms.html#module-hsslms.lms" title="hsslms.lms"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hsslms.lms</span></code></a>: Leighton-Micali Signatures (LMS). This system holds a fixed number of one-time signatures, i.e. LM-OTS.</p></li>
+<li><p><a class="reference internal" href="hsslms.html#module-hsslms.hss" title="hsslms.hss"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hsslms.hss</span></code></a>: Hierarchical Signatures (HSS). This system uses a sequence of LMS.</p></li>
+<li><p><a class="reference internal" href="hsslms.html#module-hsslms.pershss" title="hsslms.pershss"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hsslms.pershss</span></code></a>: Persistent Hierarchical Signatures (PersHSS). The same as HSS except that the private key is stored in an encrypted file.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="example-usage">
+<h1>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline"></a></h1>
+<section id="lm-ots">
+<h2>LM-OTS<a class="headerlink" href="#lm-ots" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">urandom</span>
+<span class="kn">from</span> <span class="nn">hsslms</span> <span class="kn">import</span> <span class="n">LM_OTS_Priv</span>
+
+<span class="c1"># generate a one-time private key</span>
+<span class="n">sk</span> <span class="o">=</span> <span class="n">LM_OTS_Priv</span><span class="p">(</span><span class="n">LMOTS_ALGORITHM_TYPE</span><span class="o">.</span><span class="n">LMOTS_SHA256_N32_W2</span><span class="p">,</span> <span class="n">urandom</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># sign a message with the private key</span>
+<span class="n">signature</span> <span class="o">=</span> <span class="n">sk</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+<span class="c1"># compute the related public key</span>
+<span class="n">vk</span> <span class="o">=</span> <span class="n">sk</span><span class="o">.</span><span class="n">gen_pub</span><span class="p">()</span>
+<span class="c1"># verify the signature, if invalid an exception will be raised</span>
+<span class="n">vk</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="n">signature</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="lms">
+<h2>LMS<a class="headerlink" href="#lms" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">urandom</span>
+<span class="kn">from</span> <span class="nn">hsslms</span> <span class="kn">import</span> <span class="n">LMS_Priv</span>
+
+<span class="c1"># generate a private key</span>
+<span class="n">sk</span> <span class="o">=</span> <span class="n">LMS_Priv</span><span class="p">(</span><span class="n">LMS_ALGORITHM_TYPE</span><span class="o">.</span><span class="n">LMS_SHA256_M32_H10</span><span class="p">,</span> <span class="n">LMOTS_ALGORITHM_TYPE</span><span class="o">.</span><span class="n">LMOTS_SHA256_N32_W8</span><span class="p">)</span>
+<span class="c1"># sign a message with the private key, in total 2^10 signatures are available</span>
+<span class="n">signature</span> <span class="o">=</span> <span class="n">sk</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+<span class="c1"># compute the related public key</span>
+<span class="n">vk</span> <span class="o">=</span> <span class="n">sk</span><span class="o">.</span><span class="n">gen_pub</span><span class="p">()</span>
+<span class="c1"># verify the signature, if invalid an exception will be raised</span>
+<span class="n">vk</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="n">signature</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="hss">
+<h2>HSS<a class="headerlink" href="#hss" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">urandom</span>
+<span class="kn">from</span> <span class="nn">hsslms</span> <span class="kn">import</span> <span class="n">HSS_Priv</span>
+
+<span class="c1"># generate a private key</span>
+<span class="n">sk</span> <span class="o">=</span> <span class="n">HSS_Priv</span><span class="p">([</span><span class="n">LMS_ALGORITHM_TYPE</span><span class="o">.</span><span class="n">LMS_SHA256_M32_H10</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">LMOTS_ALGORITHM_TYPE</span><span class="o">.</span><span class="n">LMOTS_SHA256_N32_W1</span><span class="p">)</span>
+<span class="c1"># sign a message with the private key, in total 2^20 signatures are available</span>
+<span class="n">signature</span> <span class="o">=</span> <span class="n">sk</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+<span class="c1"># compute the related public key</span>
+<span class="n">vk</span> <span class="o">=</span> <span class="n">sk</span><span class="o">.</span><span class="n">gen_pub</span><span class="p">()</span>
+<span class="c1"># verify the signature, if invalid an exception will be raised</span>
+<span class="n">vk</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="n">signature</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="command-line-interface">
+<h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline"></a></h2>
+<p>This module comes with an command line interface. Example usage:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&gt; hsslms --help
+usage: __main__.py [-h] {key-gen,pubkey-gen,sign,verify,sk-info,vk-info} ...
+
+Hierarchical Signature System of Leighton-Micali Hash-Based Signatures according to RFC 8554
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+commands:
+  availabel commands
+
+  {key-gen,pubkey-gen,sign,verify,sk-info,vk-info}
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">src</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hsslms.html">hsslms package</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-right" title="src" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Vögeler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

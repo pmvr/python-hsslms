@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hsslms package &mdash; HssLms 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="src" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> HssLms
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">hsslms package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-hsslms.hss">hsslms.hss module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-hsslms.lmots">hsslms.lmots module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-hsslms.lms">hsslms.lms module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-hsslms.pershss">hsslms.pershss module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-hsslms.restricted_unpickler">hsslms.restricted_unpickler module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-hsslms.utils">hsslms.utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-hsslms">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HssLms</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">src</a> &raquo;</li>
+      <li>hsslms package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/hsslms.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hsslms-package">
+<h1>hsslms package<a class="headerlink" href="#hsslms-package" title="Permalink to this headline"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-hsslms.hss">
+<span id="hsslms-hss-module"></span><h2>hsslms.hss module<a class="headerlink" href="#module-hsslms.hss" title="Permalink to this headline"></a></h2>
+<p>Hierarchical Signatures</p>
+<p>For reference see RFC 8554, section 6.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.hss.HSS_Priv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.hss.</span></span><span class="sig-name descname"><span class="pre">HSS_Priv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lmstypecodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otstypecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Priv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.hss.HSS_Priv" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to hold the private key of Hierarchical Signatures (HSS)</p>
+<p>For a reference see RFC 8554, section 6.</p>
+<p>This class can be used to generate the belonging public key <cite>HSS_Pub</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lmstypecodes</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-obj docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE</span></code>) – List of enumeration of Leighton-Micali Signatures (LMS) algorithm types</p></li>
+<li><p><strong>otstypecode</strong> (<a class="reference internal" href="#hsslms.utils.LMOTS_ALGORITHM_TYPE" title="hsslms.utils.LMOTS_ALGORITHM_TYPE"><em>LMOTS_ALGORITHM_TYPE</em></a>) – Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types</p></li>
+<li><p><strong>num_cores</strong> (<em>int</em><em>, </em><em>None</em><em>, </em><em>optional</em>) – the number of CPU cores used for key generation, None=all cores</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.hss.HSS_Priv.gen_pub">
+<span class="sig-name descname"><span class="pre">gen_pub</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Priv.gen_pub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.hss.HSS_Priv.gen_pub" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the public key associated with the private key in this class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The public key belonging to this private key.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.hss.HSS_Pub" title="hsslms.hss.HSS_Pub">HSS_Pub</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.hss.HSS_Priv.get_avail_signatures">
+<span class="sig-name descname"><span class="pre">get_avail_signatures</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Priv.get_avail_signatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.hss.HSS_Priv.get_avail_signatures" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the numbers of availalbe signatures.</p>
+<p>Every invokation of the ‘sign’-Method reduces this number by one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The remaining number of signatures that can be generated.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.hss.HSS_Priv.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Priv.info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.hss.HSS_Priv.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.hss.HSS_Priv.sign">
+<span class="sig-name descname"><span class="pre">sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Priv.sign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.hss.HSS_Priv.sign" title="Permalink to this definition"></a></dt>
+<dd><p>Signature Generation of HSS</p>
+<p>Signs a message with the private key associated with the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>bytes</em><em>, </em><em>BufferedReader</em>) – Message to be signed</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.utils.FAILURE" title="hsslms.utils.FAILURE"><strong>FAILURE</strong></a> – If a signature has already been computed, or for other
+    technical reason</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The signature to <cite>message</cite>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.hss.HSS_Pub">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.hss.</span></span><span class="sig-name descname"><span class="pre">HSS_Pub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pubkey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Pub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.hss.HSS_Pub" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to hold the public key of Hierarchical Signatures (HSS)</p>
+<p>This hierarchical scheme uses LMS as a component.</p>
+<p>For a reference see RFC 8554, section 6.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pubkey</strong> (<em>bytes</em>) – u32str(L) || LMS Public Key[0]</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.utils.INVALID" title="hsslms.utils.INVALID"><strong>INVALID</strong></a> – If the public is invalid.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.hss.HSS_Pub.get_pubkey">
+<span class="sig-name descname"><span class="pre">get_pubkey</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Pub.get_pubkey"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.hss.HSS_Pub.get_pubkey" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.hss.HSS_Pub.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Pub.info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.hss.HSS_Pub.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.hss.HSS_Pub.verify">
+<span class="sig-name descname"><span class="pre">verify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Pub.verify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.hss.HSS_Pub.verify" title="Permalink to this definition"></a></dt>
+<dd><p>Signature Verification of HSS</p>
+<p>Tries to verify the signature of a message with the public key associated
+with the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>bytes</em><em>, </em><em>BufferedReader</em>) – Message to be verified with <cite>signature</cite></p></li>
+<li><p><strong>signature</strong> (<em>bytes</em>) – Signature belonging to the <cite>message</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.utils.INVALID" title="hsslms.utils.INVALID"><strong>INVALID</strong></a> – If signature is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-hsslms.lmots">
+<span id="hsslms-lmots-module"></span><h2>hsslms.lmots module<a class="headerlink" href="#module-hsslms.lmots" title="Permalink to this headline"></a></h2>
+<p>LM-OTS One-Time Signatures</p>
+<p>For reference see RFC 8554, section 4.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.lmots.LM_OTS_Priv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.lmots.</span></span><span class="sig-name descname"><span class="pre">LM_OTS_Priv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Priv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lmots.LM_OTS_Priv" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to hold the private key of LM-OTS One-Time Signatures (LMOTS)</p>
+<p>For a reference see RFC 8554, section 4.</p>
+<p>This class can be used to generate the belonging public key <cite>LM_OTS_Pub</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>typecode</strong> (<a class="reference internal" href="#hsslms.utils.LMOTS_ALGORITHM_TYPE" title="hsslms.utils.LMOTS_ALGORITHM_TYPE"><em>LMOTS_ALGORITHM_TYPE</em></a>) – Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types</p></li>
+<li><p><strong>I</strong> (<em>bytes</em>) – 16 random bytes</p></li>
+<li><p><strong>q</strong> (<em>int</em>) – 32-bit number / no.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.lmots.LM_OTS_Priv.gen_pub">
+<span class="sig-name descname"><span class="pre">gen_pub</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Priv.gen_pub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lmots.LM_OTS_Priv.gen_pub" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the public key associated with the private key in this class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The public key belonging to this private key.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.lmots.LM_OTS_Pub" title="hsslms.lmots.LM_OTS_Pub">LM_OTS_Pub</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.lmots.LM_OTS_Priv.sign">
+<span class="sig-name descname"><span class="pre">sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Priv.sign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lmots.LM_OTS_Priv.sign" title="Permalink to this definition"></a></dt>
+<dd><p>Signature Generation of LMOTS</p>
+<p>Signs a message with the private key associated with the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>bytes</em><em>, </em><em>BufferedReader</em>) – Message to be signed</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.utils.FAILURE" title="hsslms.utils.FAILURE"><strong>FAILURE</strong></a> – If a signature has already been computed, or for other
+    technical reason</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The signature to <cite>message</cite>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.lmots.LM_OTS_Pub">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.lmots.</span></span><span class="sig-name descname"><span class="pre">LM_OTS_Pub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pubkey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Pub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lmots.LM_OTS_Pub" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to hold the public key of LM-OTS One-Time Signatures (LMOTS)</p>
+<p>For a reference see RFC 8554, section 4.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pubkey</strong> (<em>bytes</em>) – typecode || I || q || K</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.lmots.LM_OTS_Pub.verify">
+<span class="sig-name descname"><span class="pre">verify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Pub.verify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lmots.LM_OTS_Pub.verify" title="Permalink to this definition"></a></dt>
+<dd><p>Signature Verification of LMOTS</p>
+<p>Tries to verify the signature of a message with the public key associated
+with the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>bytes</em><em>, </em><em>BufferedReader</em>) – Message to be verified with <cite>signature</cite></p></li>
+<li><p><strong>signature</strong> (<em>bytes</em>) – Signature belonging to the <cite>message</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.utils.INVALID" title="hsslms.utils.INVALID"><strong>INVALID</strong></a> – If signature is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-hsslms.lms">
+<span id="hsslms-lms-module"></span><h2>hsslms.lms module<a class="headerlink" href="#module-hsslms.lms" title="Permalink to this headline"></a></h2>
+<p>Leighton-Micali Signatures</p>
+<p>For reference see RFC 8554, section 5.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.lms.LMS_Priv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.lms.</span></span><span class="sig-name descname"><span class="pre">LMS_Priv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otstypecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Priv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lms.LMS_Priv" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to hold the private key of Leighton-Micali Signatures (LMS)</p>
+<p>For a reference see RFC 8554, section 5.</p>
+<p>This class can be used to generate the belonging public key <cite>LMS_Pub</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>typecode</strong> (<a class="reference internal" href="#hsslms.utils.LMS_ALGORITHM_TYPE" title="hsslms.utils.LMS_ALGORITHM_TYPE"><em>LMS_ALGORITHM_TYPE</em></a>) – Enumeration of Leighton-Micali Signatures (LMS) algorithm types</p></li>
+<li><p><strong>otstypecode</strong> (<a class="reference internal" href="#hsslms.utils.LMOTS_ALGORITHM_TYPE" title="hsslms.utils.LMOTS_ALGORITHM_TYPE"><em>LMOTS_ALGORITHM_TYPE</em></a>) – Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types</p></li>
+<li><p><strong>num_cores</strong> (<em>int</em><em>, </em><em>None</em><em>, </em><em>optional</em>) – the number of CPU cores used for key generation, None=all cores</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.lms.LMS_Priv.gen_pub">
+<span class="sig-name descname"><span class="pre">gen_pub</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Priv.gen_pub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lms.LMS_Priv.gen_pub" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the public key associated with the private key in this class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The public key belonging to this private key.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.lms.LMS_Pub" title="hsslms.lms.LMS_Pub">LMS_Pub</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.lms.LMS_Priv.get_avail_signatures">
+<span class="sig-name descname"><span class="pre">get_avail_signatures</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Priv.get_avail_signatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lms.LMS_Priv.get_avail_signatures" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the numbers of availalbe signatures.</p>
+<p>Every invokation of the ‘sign’-Method reduces this number by one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The remaining number of signatures that can be generated.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.lms.LMS_Priv.sign">
+<span class="sig-name descname"><span class="pre">sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Priv.sign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lms.LMS_Priv.sign" title="Permalink to this definition"></a></dt>
+<dd><p>Signature Generation of LMS</p>
+<p>Signs a message with the private key associated with the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>bytes</em><em>, </em><em>BufferedReader</em>) – Message to be signed</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.utils.FAILURE" title="hsslms.utils.FAILURE"><strong>FAILURE</strong></a> – If a signature has already been computed, or for other
+    technical reason</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The signature to <cite>message</cite>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.lms.LMS_Pub">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.lms.</span></span><span class="sig-name descname"><span class="pre">LMS_Pub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pubkey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Pub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lms.LMS_Pub" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to hold the public key of Leighton-Micali Signatures (LMS)</p>
+<p>For a reference see RFC 8554, section 5.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pubkey</strong> (<em>bytes</em>) – u32str(type) || u32str(otstype) || I || T[1]</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.utils.INVALID" title="hsslms.utils.INVALID"><strong>INVALID</strong></a> – If the public is invalid.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.lms.LMS_Pub.get_pubkey">
+<span class="sig-name descname"><span class="pre">get_pubkey</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Pub.get_pubkey"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lms.LMS_Pub.get_pubkey" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.lms.LMS_Pub.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Pub.info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lms.LMS_Pub.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.lms.LMS_Pub.verify">
+<span class="sig-name descname"><span class="pre">verify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Pub.verify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lms.LMS_Pub.verify" title="Permalink to this definition"></a></dt>
+<dd><p>Signature Verification of LMS</p>
+<p>Tries to verify the signature of a message with the public key associated
+with the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>bytes</em><em>, </em><em>BufferedReader</em>) – Message to be verified with <cite>signature</cite></p></li>
+<li><p><strong>signature</strong> (<em>bytes</em>) – Signature belonging to the <cite>message</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.utils.INVALID" title="hsslms.utils.INVALID"><strong>INVALID</strong></a> – If signature is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-hsslms.pershss">
+<span id="hsslms-pershss-module"></span><h2>hsslms.pershss module<a class="headerlink" href="#module-hsslms.pershss" title="Permalink to this headline"></a></h2>
+<p>Created on Sat Jan  1 20:00:55 2022</p>
+<p>&#64;author: mvr</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.pershss.PersHSS_Priv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.pershss.</span></span><span class="sig-name descname"><span class="pre">PersHSS_Priv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lmstypecodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otstypecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cores</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/pershss.html#PersHSS_Priv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.pershss.PersHSS_Priv" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hsslms.hss.HSS_Priv" title="hsslms.hss.HSS_Priv"><code class="xref py py-class docutils literal notranslate"><span class="pre">hsslms.hss.HSS_Priv</span></code></a></p>
+<p>A class derived from HSS_Priv.</p>
+<p>It is used to generate the private key and
+derive the public key of a Hierarchical Signature System (HSS)
+The private key is signed and stored in an encrypted file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lmstypecodes</strong> – List of LMS_ALGORITHM_TYPE</p></li>
+<li><p><strong>otstypecode</strong> – LMOTS_ALGORITHM_TYPE</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – holds the name of the file to store the key</p></li>
+<li><p><strong>password</strong> (<em>bytes</em>) – password to sign and encrypt the file</p></li>
+<li><p><strong>frequence</strong> (<em>int</em>) – frequnce at which the key is stored to a file</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.pershss.PersHSS_Priv.FILEHEADER">
+<span class="sig-name descname"><span class="pre">FILEHEADER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b'PersHSS_Priv_v\x000.1.1'</span></em><a class="headerlink" href="#hsslms.pershss.PersHSS_Priv.FILEHEADER" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.pershss.PersHSS_Priv.from_file">
+<span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/pershss.html#PersHSS_Priv.from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.pershss.PersHSS_Priv.from_file" title="Permalink to this definition"></a></dt>
+<dd><p>A key, HSS_Priv, is loaded from a password-protected file.</p>
+<p>Frequnce signatures are skipped to ensure that no private key is used
+more than once.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – name of the file</p></li>
+<li><p><strong>password</strong> (<em>bytes</em>) – password of the file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.utils.FAILURE" title="hsslms.utils.FAILURE"><strong>FAILURE</strong></a> – if the key cannot be loaded</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>HSS_Priv</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.pershss.PersHSS_Priv.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/pershss.html#PersHSS_Priv.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.pershss.PersHSS_Priv.save" title="Permalink to this definition"></a></dt>
+<dd><p>The key is saved.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.pershss.PersHSS_Priv.sign">
+<span class="sig-name descname"><span class="pre">sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/pershss.html#PersHSS_Priv.sign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.pershss.PersHSS_Priv.sign" title="Permalink to this definition"></a></dt>
+<dd><p>Signs the message with the private key associated with the class.</p>
+<p>The key is automatically stored to disk after frequnce signatures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>bytes</em><em>, </em><em>BufferedReader</em>) – Message to be signed</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.utils.FAILURE" title="hsslms.utils.FAILURE"><strong>FAILURE</strong></a> – If a signature has already been computed, or for other
+    technical reason</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The signature to <cite>message</cite>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hsslms.pershss.kdf">
+<span class="sig-prename descclassname"><span class="pre">hsslms.pershss.</span></span><span class="sig-name descname"><span class="pre">kdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">salt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/pershss.html#kdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.pershss.kdf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-hsslms.restricted_unpickler">
+<span id="hsslms-restricted-unpickler-module"></span><h2>hsslms.restricted_unpickler module<a class="headerlink" href="#module-hsslms.restricted_unpickler" title="Permalink to this headline"></a></h2>
+<p>This module is for safe unpickling a HSS Private Key.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.restricted_unpickler.RestrictedUnpickler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.restricted_unpickler.</span></span><span class="sig-name descname"><span class="pre">RestrictedUnpickler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fix_imports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ASCII'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'strict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/restricted_unpickler.html#RestrictedUnpickler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.restricted_unpickler.RestrictedUnpickler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_pickle.Unpickler</span></code></p>
+<p>Safe unpickle a HSS Private Key</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.restricted_unpickler.RestrictedUnpickler.find_class">
+<span class="sig-name descname"><span class="pre">find_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/restricted_unpickler.html#RestrictedUnpickler.find_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.restricted_unpickler.RestrictedUnpickler.find_class" title="Permalink to this definition"></a></dt>
+<dd><p>Return an object from a specified module.</p>
+<p>If necessary, the module will be imported. Subclasses may override
+this method (e.g. to restrict unpickling of arbitrary classes and
+functions).</p>
+<p>This method is called whenever a class or a function object is
+needed.  Both arguments passed are str objects.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hsslms.restricted_unpickler.restricted_loads">
+<span class="sig-prename descclassname"><span class="pre">hsslms.restricted_unpickler.</span></span><span class="sig-name descname"><span class="pre">restricted_loads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/restricted_unpickler.html#restricted_loads"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.restricted_unpickler.restricted_loads" title="Permalink to this definition"></a></dt>
+<dd><p>Helper function analogous to pickle.loads().</p>
+</dd></dl>
+
+</section>
+<section id="module-hsslms.utils">
+<span id="hsslms-utils-module"></span><h2>hsslms.utils module<a class="headerlink" href="#module-hsslms.utils" title="Permalink to this headline"></a></h2>
+<p>Created on Sat Jan  1 11:48:07 2022</p>
+<p>&#64;author: mvr</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="hsslms.utils.FAILURE">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.utils.</span></span><span class="sig-name descname"><span class="pre">FAILURE</span></span><a class="reference internal" href="_modules/hsslms/utils.html#FAILURE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.utils.FAILURE" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception for general technical failures , e.g. if no private key is left to sign.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="hsslms.utils.INVALID">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.utils.</span></span><span class="sig-name descname"><span class="pre">INVALID</span></span><a class="reference internal" href="_modules/hsslms/utils.html#INVALID"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.utils.INVALID" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception for an invalid signature.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.utils.LMOTS_ALGORITHM_TYPE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.utils.</span></span><span class="sig-name descname"><span class="pre">LMOTS_ALGORITHM_TYPE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/utils.html#LMOTS_ALGORITHM_TYPE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.utils.LMOTS_ALGORITHM_TYPE" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types, see rfc8554.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMOTS_ALGORITHM_TYPE.H">
+<span class="sig-name descname"><span class="pre">H</span></span><a class="headerlink" href="#hsslms.utils.LMOTS_ALGORITHM_TYPE.H" title="Permalink to this definition"></a></dt>
+<dd><p>Hashfunction</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMOTS_ALGORITHM_TYPE.n">
+<span class="sig-name descname"><span class="pre">n</span></span><a class="headerlink" href="#hsslms.utils.LMOTS_ALGORITHM_TYPE.n" title="Permalink to this definition"></a></dt>
+<dd><p>Outputlength of the hashfunction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMOTS_ALGORITHM_TYPE.w">
+<span class="sig-name descname"><span class="pre">w</span></span><a class="headerlink" href="#hsslms.utils.LMOTS_ALGORITHM_TYPE.w" title="Permalink to this definition"></a></dt>
+<dd><p>number of simultanious signes bits</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMOTS_ALGORITHM_TYPE.p">
+<span class="sig-name descname"><span class="pre">p</span></span><a class="headerlink" href="#hsslms.utils.LMOTS_ALGORITHM_TYPE.p" title="Permalink to this definition"></a></dt>
+<dd><p>internal dependent parameter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMOTS_ALGORITHM_TYPE.ls">
+<span class="sig-name descname"><span class="pre">ls</span></span><a class="headerlink" href="#hsslms.utils.LMOTS_ALGORITHM_TYPE.ls" title="Permalink to this definition"></a></dt>
+<dd><p>internal dependent parameter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id0">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H</span></span><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W1">
+<span class="sig-name descname"><span class="pre">LMOTS_SHA256_N32_W1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2">
+<span class="sig-name descname"><span class="pre">LMOTS_SHA256_N32_W2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W4">
+<span class="sig-name descname"><span class="pre">LMOTS_SHA256_N32_W4</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W4" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W8">
+<span class="sig-name descname"><span class="pre">LMOTS_SHA256_N32_W8</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W8" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id1">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ls</span></span><a class="headerlink" href="#id1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id2">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n</span></span><a class="headerlink" href="#id2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id3">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">p</span></span><a class="headerlink" href="#id3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id4">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">w</span></span><a class="headerlink" href="#id4" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.utils.LMS_ALGORITHM_TYPE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.utils.</span></span><span class="sig-name descname"><span class="pre">LMS_ALGORITHM_TYPE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/utils.html#LMS_ALGORITHM_TYPE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.utils.LMS_ALGORITHM_TYPE" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Enumeration of Leighton-Micali Signatures (LMS) algorithm types, see rfc8554.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMS_ALGORITHM_TYPE.H">
+<span class="sig-name descname"><span class="pre">H</span></span><a class="headerlink" href="#hsslms.utils.LMS_ALGORITHM_TYPE.H" title="Permalink to this definition"></a></dt>
+<dd><p>Hashfunction</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMS_ALGORITHM_TYPE.m">
+<span class="sig-name descname"><span class="pre">m</span></span><a class="headerlink" href="#hsslms.utils.LMS_ALGORITHM_TYPE.m" title="Permalink to this definition"></a></dt>
+<dd><p>Outputlength of the hashfunction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMS_ALGORITHM_TYPE.h">
+<span class="sig-name descname"><span class="pre">h</span></span><a class="headerlink" href="#hsslms.utils.LMS_ALGORITHM_TYPE.h" title="Permalink to this definition"></a></dt>
+<dd><p>height of the tree</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id5">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H</span></span><a class="headerlink" href="#id5" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10">
+<span class="sig-name descname"><span class="pre">LMS_SHA256_M32_H10</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15">
+<span class="sig-name descname"><span class="pre">LMS_SHA256_M32_H15</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H20">
+<span class="sig-name descname"><span class="pre">LMS_SHA256_M32_H20</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H20" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H25">
+<span class="sig-name descname"><span class="pre">LMS_SHA256_M32_H25</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></em><a class="headerlink" href="#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H25" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H5">
+<span class="sig-name descname"><span class="pre">LMS_SHA256_M32_H5</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H5" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id6">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">h</span></span><a class="headerlink" href="#id6" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id7">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">m</span></span><a class="headerlink" href="#id7" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hsslms.utils.cksm">
+<span class="sig-prename descclassname"><span class="pre">hsslms.utils.</span></span><span class="sig-name descname"><span class="pre">cksm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ls</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/utils.html#cksm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.utils.cksm" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hsslms.utils.coef">
+<span class="sig-prename descclassname"><span class="pre">hsslms.utils.</span></span><span class="sig-name descname"><span class="pre">coef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/utils.html#coef"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.utils.coef" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hsslms.utils.strTou32">
+<span class="sig-prename descclassname"><span class="pre">hsslms.utils.</span></span><span class="sig-name descname"><span class="pre">strTou32</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/utils.html#strTou32"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.utils.strTou32" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hsslms.utils.u16str">
+<span class="sig-prename descclassname"><span class="pre">hsslms.utils.</span></span><span class="sig-name descname"><span class="pre">u16str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/utils.html#u16str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.utils.u16str" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hsslms.utils.u32str">
+<span class="sig-prename descclassname"><span class="pre">hsslms.utils.</span></span><span class="sig-name descname"><span class="pre">u32str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/utils.html#u32str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.utils.u32str" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hsslms.utils.u8str">
+<span class="sig-prename descclassname"><span class="pre">hsslms.utils.</span></span><span class="sig-name descname"><span class="pre">u8str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/utils.html#u8str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.utils.u8str" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-hsslms">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hsslms" title="Permalink to this headline"></a></h2>
+<p>Leighton-Micali Hash-Based Signatures</p>
+<p>This modulue provides an implementation of Leighton-Micali Hash-Based Signatures
+in Python according to RFC 8554, <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc8554.html">https://www.rfc-editor.org/rfc/rfc8554.html</a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>For LM-OTS One-Time Signatures the classes LM_OTS_Priv and LM_OTS_Pub can be used.</p></li>
+<li><p>For Leighton-Micali Signatures the classes LMS_Priv and LMS_Pub can be used.</p></li>
+<li><p>For Hierarchical Signatures the classes HSS_Priv and HSS_Pub can be used.</p></li>
+</ul>
+</div></blockquote>
+<p>There is also a command line script available <code class="docutils literal notranslate"><span class="pre">hsslms</span></code> which can be used for Hierarchical Signatures.</p>
+<p class="rubric">Example</p>
+<dl>
+<dt>LM-OTS One-Time Signatures::</dt><dd><p>from os import urandom
+from hsslms import LM_OTS_Priv</p>
+<p># generate a one-time private key
+sk = LM_OTS_Priv(LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2, urandom(16), 0)
+# sign a message with the private key
+signature = sk.sign(b’abc’)
+# compute the related public key
+vk = sk.gen_pub()
+# verify the signature, if invalid an exception will be raised
+vk.verify(b’abc’, signature)</p>
+</dd>
+<dt>Leighton-Micali Signatures::</dt><dd><p>from os import urandom
+from hsslms import LMS_Priv</p>
+<p># generate a private key
+sk = LMS_Priv(LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10, LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W8)
+# sign a message with the private key, in total 2^10 signatures are available
+signature = sk.sign(b’abc’)
+# compute the related public key
+vk = sk.gen_pub()
+# verify the signature, if invalid an exception will be raised
+vk.verify(b’abc’, signature)</p>
+</dd>
+<dt>Hierarchical Signatures::</dt><dd><p>from os import urandom
+from hsslms import HSS_Priv</p>
+<p># generate a private key
+sk = HSS_Priv([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10]*2, LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W1)
+# sign a message with the private key, in total 2^20 signatures are available
+signature = sk.sign(b’abc’)
+# compute the related public key
+vk = sk.gen_pub()
+# verify the signature, if invalid an exception will be raised
+vk.verify(b’abc’, signature)</p>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="hsslms.FAILURE">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.</span></span><span class="sig-name descname"><span class="pre">FAILURE</span></span><a class="reference internal" href="_modules/hsslms/utils.html#FAILURE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.FAILURE" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception for general technical failures , e.g. if no private key is left to sign.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.HSS_Priv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.</span></span><span class="sig-name descname"><span class="pre">HSS_Priv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lmstypecodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otstypecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Priv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.HSS_Priv" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to hold the private key of Hierarchical Signatures (HSS)</p>
+<p>For a reference see RFC 8554, section 6.</p>
+<p>This class can be used to generate the belonging public key <cite>HSS_Pub</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lmstypecodes</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of <a class="reference internal" href="#hsslms.LMS_ALGORITHM_TYPE" title="hsslms.LMS_ALGORITHM_TYPE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE</span></code></a>) – List of enumeration of Leighton-Micali Signatures (LMS) algorithm types</p></li>
+<li><p><strong>otstypecode</strong> (<a class="reference internal" href="#hsslms.LMOTS_ALGORITHM_TYPE" title="hsslms.LMOTS_ALGORITHM_TYPE"><em>LMOTS_ALGORITHM_TYPE</em></a>) – Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types</p></li>
+<li><p><strong>num_cores</strong> (<em>int</em><em>, </em><em>None</em><em>, </em><em>optional</em>) – the number of CPU cores used for key generation, None=all cores</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.HSS_Priv.gen_pub">
+<span class="sig-name descname"><span class="pre">gen_pub</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Priv.gen_pub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.HSS_Priv.gen_pub" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the public key associated with the private key in this class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The public key belonging to this private key.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.HSS_Pub" title="hsslms.HSS_Pub">HSS_Pub</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.HSS_Priv.get_avail_signatures">
+<span class="sig-name descname"><span class="pre">get_avail_signatures</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Priv.get_avail_signatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.HSS_Priv.get_avail_signatures" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the numbers of availalbe signatures.</p>
+<p>Every invokation of the ‘sign’-Method reduces this number by one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The remaining number of signatures that can be generated.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.HSS_Priv.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Priv.info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.HSS_Priv.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.HSS_Priv.sign">
+<span class="sig-name descname"><span class="pre">sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Priv.sign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.HSS_Priv.sign" title="Permalink to this definition"></a></dt>
+<dd><p>Signature Generation of HSS</p>
+<p>Signs a message with the private key associated with the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>bytes</em><em>, </em><em>BufferedReader</em>) – Message to be signed</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.FAILURE" title="hsslms.FAILURE"><strong>FAILURE</strong></a> – If a signature has already been computed, or for other
+    technical reason</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The signature to <cite>message</cite>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.HSS_Pub">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.</span></span><span class="sig-name descname"><span class="pre">HSS_Pub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pubkey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Pub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.HSS_Pub" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to hold the public key of Hierarchical Signatures (HSS)</p>
+<p>This hierarchical scheme uses LMS as a component.</p>
+<p>For a reference see RFC 8554, section 6.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pubkey</strong> (<em>bytes</em>) – u32str(L) || LMS Public Key[0]</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.INVALID" title="hsslms.INVALID"><strong>INVALID</strong></a> – If the public is invalid.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.HSS_Pub.get_pubkey">
+<span class="sig-name descname"><span class="pre">get_pubkey</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Pub.get_pubkey"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.HSS_Pub.get_pubkey" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.HSS_Pub.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Pub.info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.HSS_Pub.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.HSS_Pub.verify">
+<span class="sig-name descname"><span class="pre">verify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/hss.html#HSS_Pub.verify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.HSS_Pub.verify" title="Permalink to this definition"></a></dt>
+<dd><p>Signature Verification of HSS</p>
+<p>Tries to verify the signature of a message with the public key associated
+with the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>bytes</em><em>, </em><em>BufferedReader</em>) – Message to be verified with <cite>signature</cite></p></li>
+<li><p><strong>signature</strong> (<em>bytes</em>) – Signature belonging to the <cite>message</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.INVALID" title="hsslms.INVALID"><strong>INVALID</strong></a> – If signature is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="hsslms.INVALID">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.</span></span><span class="sig-name descname"><span class="pre">INVALID</span></span><a class="reference internal" href="_modules/hsslms/utils.html#INVALID"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.INVALID" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception for an invalid signature.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.LMOTS_ALGORITHM_TYPE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.</span></span><span class="sig-name descname"><span class="pre">LMOTS_ALGORITHM_TYPE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/utils.html#LMOTS_ALGORITHM_TYPE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LMOTS_ALGORITHM_TYPE" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types, see rfc8554.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMOTS_ALGORITHM_TYPE.H">
+<span class="sig-name descname"><span class="pre">H</span></span><a class="headerlink" href="#hsslms.LMOTS_ALGORITHM_TYPE.H" title="Permalink to this definition"></a></dt>
+<dd><p>Hashfunction</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMOTS_ALGORITHM_TYPE.n">
+<span class="sig-name descname"><span class="pre">n</span></span><a class="headerlink" href="#hsslms.LMOTS_ALGORITHM_TYPE.n" title="Permalink to this definition"></a></dt>
+<dd><p>Outputlength of the hashfunction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMOTS_ALGORITHM_TYPE.w">
+<span class="sig-name descname"><span class="pre">w</span></span><a class="headerlink" href="#hsslms.LMOTS_ALGORITHM_TYPE.w" title="Permalink to this definition"></a></dt>
+<dd><p>number of simultanious signes bits</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMOTS_ALGORITHM_TYPE.p">
+<span class="sig-name descname"><span class="pre">p</span></span><a class="headerlink" href="#hsslms.LMOTS_ALGORITHM_TYPE.p" title="Permalink to this definition"></a></dt>
+<dd><p>internal dependent parameter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMOTS_ALGORITHM_TYPE.ls">
+<span class="sig-name descname"><span class="pre">ls</span></span><a class="headerlink" href="#hsslms.LMOTS_ALGORITHM_TYPE.ls" title="Permalink to this definition"></a></dt>
+<dd><p>internal dependent parameter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id8">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H</span></span><a class="headerlink" href="#id8" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W1">
+<span class="sig-name descname"><span class="pre">LMOTS_SHA256_N32_W1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W1" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2">
+<span class="sig-name descname"><span class="pre">LMOTS_SHA256_N32_W2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W4">
+<span class="sig-name descname"><span class="pre">LMOTS_SHA256_N32_W4</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W4" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W8">
+<span class="sig-name descname"><span class="pre">LMOTS_SHA256_N32_W8</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W8" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id9">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ls</span></span><a class="headerlink" href="#id9" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id10">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n</span></span><a class="headerlink" href="#id10" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id11">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">p</span></span><a class="headerlink" href="#id11" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id12">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">w</span></span><a class="headerlink" href="#id12" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.LMS_ALGORITHM_TYPE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.</span></span><span class="sig-name descname"><span class="pre">LMS_ALGORITHM_TYPE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/utils.html#LMS_ALGORITHM_TYPE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LMS_ALGORITHM_TYPE" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Enumeration of Leighton-Micali Signatures (LMS) algorithm types, see rfc8554.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMS_ALGORITHM_TYPE.H">
+<span class="sig-name descname"><span class="pre">H</span></span><a class="headerlink" href="#hsslms.LMS_ALGORITHM_TYPE.H" title="Permalink to this definition"></a></dt>
+<dd><p>Hashfunction</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMS_ALGORITHM_TYPE.m">
+<span class="sig-name descname"><span class="pre">m</span></span><a class="headerlink" href="#hsslms.LMS_ALGORITHM_TYPE.m" title="Permalink to this definition"></a></dt>
+<dd><p>Outputlength of the hashfunction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMS_ALGORITHM_TYPE.h">
+<span class="sig-name descname"><span class="pre">h</span></span><a class="headerlink" href="#hsslms.LMS_ALGORITHM_TYPE.h" title="Permalink to this definition"></a></dt>
+<dd><p>height of the tree</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id13">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H</span></span><a class="headerlink" href="#id13" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10">
+<span class="sig-name descname"><span class="pre">LMS_SHA256_M32_H10</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15">
+<span class="sig-name descname"><span class="pre">LMS_SHA256_M32_H15</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H20">
+<span class="sig-name descname"><span class="pre">LMS_SHA256_M32_H20</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H20" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H25">
+<span class="sig-name descname"><span class="pre">LMS_SHA256_M32_H25</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></em><a class="headerlink" href="#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H25" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H5">
+<span class="sig-name descname"><span class="pre">LMS_SHA256_M32_H5</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H5" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id14">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">h</span></span><a class="headerlink" href="#id14" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id15">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">m</span></span><a class="headerlink" href="#id15" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.LMS_Priv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.</span></span><span class="sig-name descname"><span class="pre">LMS_Priv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otstypecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cores</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Priv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LMS_Priv" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to hold the private key of Leighton-Micali Signatures (LMS)</p>
+<p>For a reference see RFC 8554, section 5.</p>
+<p>This class can be used to generate the belonging public key <cite>LMS_Pub</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>typecode</strong> (<a class="reference internal" href="#hsslms.LMS_ALGORITHM_TYPE" title="hsslms.LMS_ALGORITHM_TYPE"><em>LMS_ALGORITHM_TYPE</em></a>) – Enumeration of Leighton-Micali Signatures (LMS) algorithm types</p></li>
+<li><p><strong>otstypecode</strong> (<a class="reference internal" href="#hsslms.LMOTS_ALGORITHM_TYPE" title="hsslms.LMOTS_ALGORITHM_TYPE"><em>LMOTS_ALGORITHM_TYPE</em></a>) – Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types</p></li>
+<li><p><strong>num_cores</strong> (<em>int</em><em>, </em><em>None</em><em>, </em><em>optional</em>) – the number of CPU cores used for key generation, None=all cores</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.LMS_Priv.gen_pub">
+<span class="sig-name descname"><span class="pre">gen_pub</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Priv.gen_pub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LMS_Priv.gen_pub" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the public key associated with the private key in this class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The public key belonging to this private key.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.LMS_Pub" title="hsslms.LMS_Pub">LMS_Pub</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.LMS_Priv.get_avail_signatures">
+<span class="sig-name descname"><span class="pre">get_avail_signatures</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Priv.get_avail_signatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LMS_Priv.get_avail_signatures" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the numbers of availalbe signatures.</p>
+<p>Every invokation of the ‘sign’-Method reduces this number by one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The remaining number of signatures that can be generated.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.LMS_Priv.sign">
+<span class="sig-name descname"><span class="pre">sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Priv.sign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LMS_Priv.sign" title="Permalink to this definition"></a></dt>
+<dd><p>Signature Generation of LMS</p>
+<p>Signs a message with the private key associated with the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>bytes</em><em>, </em><em>BufferedReader</em>) – Message to be signed</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.FAILURE" title="hsslms.FAILURE"><strong>FAILURE</strong></a> – If a signature has already been computed, or for other
+    technical reason</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The signature to <cite>message</cite>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.LMS_Pub">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.</span></span><span class="sig-name descname"><span class="pre">LMS_Pub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pubkey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Pub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LMS_Pub" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to hold the public key of Leighton-Micali Signatures (LMS)</p>
+<p>For a reference see RFC 8554, section 5.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pubkey</strong> (<em>bytes</em>) – u32str(type) || u32str(otstype) || I || T[1]</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.INVALID" title="hsslms.INVALID"><strong>INVALID</strong></a> – If the public is invalid.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.LMS_Pub.get_pubkey">
+<span class="sig-name descname"><span class="pre">get_pubkey</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Pub.get_pubkey"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LMS_Pub.get_pubkey" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.LMS_Pub.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Pub.info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LMS_Pub.info" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.LMS_Pub.verify">
+<span class="sig-name descname"><span class="pre">verify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lms.html#LMS_Pub.verify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LMS_Pub.verify" title="Permalink to this definition"></a></dt>
+<dd><p>Signature Verification of LMS</p>
+<p>Tries to verify the signature of a message with the public key associated
+with the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>bytes</em><em>, </em><em>BufferedReader</em>) – Message to be verified with <cite>signature</cite></p></li>
+<li><p><strong>signature</strong> (<em>bytes</em>) – Signature belonging to the <cite>message</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.INVALID" title="hsslms.INVALID"><strong>INVALID</strong></a> – If signature is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.LM_OTS_Priv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.</span></span><span class="sig-name descname"><span class="pre">LM_OTS_Priv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Priv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LM_OTS_Priv" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to hold the private key of LM-OTS One-Time Signatures (LMOTS)</p>
+<p>For a reference see RFC 8554, section 4.</p>
+<p>This class can be used to generate the belonging public key <cite>LM_OTS_Pub</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>typecode</strong> (<a class="reference internal" href="#hsslms.LMOTS_ALGORITHM_TYPE" title="hsslms.LMOTS_ALGORITHM_TYPE"><em>LMOTS_ALGORITHM_TYPE</em></a>) – Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types</p></li>
+<li><p><strong>I</strong> (<em>bytes</em>) – 16 random bytes</p></li>
+<li><p><strong>q</strong> (<em>int</em>) – 32-bit number / no.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.LM_OTS_Priv.gen_pub">
+<span class="sig-name descname"><span class="pre">gen_pub</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Priv.gen_pub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LM_OTS_Priv.gen_pub" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the public key associated with the private key in this class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The public key belonging to this private key.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.LM_OTS_Pub" title="hsslms.LM_OTS_Pub">LM_OTS_Pub</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.LM_OTS_Priv.sign">
+<span class="sig-name descname"><span class="pre">sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Priv.sign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LM_OTS_Priv.sign" title="Permalink to this definition"></a></dt>
+<dd><p>Signature Generation of LMOTS</p>
+<p>Signs a message with the private key associated with the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>bytes</em><em>, </em><em>BufferedReader</em>) – Message to be signed</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.FAILURE" title="hsslms.FAILURE"><strong>FAILURE</strong></a> – If a signature has already been computed, or for other
+    technical reason</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The signature to <cite>message</cite>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.LM_OTS_Pub">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.</span></span><span class="sig-name descname"><span class="pre">LM_OTS_Pub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pubkey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Pub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LM_OTS_Pub" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class used to hold the public key of LM-OTS One-Time Signatures (LMOTS)</p>
+<p>For a reference see RFC 8554, section 4.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pubkey</strong> (<em>bytes</em>) – typecode || I || q || K</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.LM_OTS_Pub.verify">
+<span class="sig-name descname"><span class="pre">verify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Pub.verify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LM_OTS_Pub.verify" title="Permalink to this definition"></a></dt>
+<dd><p>Signature Verification of LMOTS</p>
+<p>Tries to verify the signature of a message with the public key associated
+with the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message</strong> (<em>bytes</em><em>, </em><em>BufferedReader</em>) – Message to be verified with <cite>signature</cite></p></li>
+<li><p><strong>signature</strong> (<em>bytes</em>) – Signature belonging to the <cite>message</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.INVALID" title="hsslms.INVALID"><strong>INVALID</strong></a> – If signature is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hsslms.PersHSS_Priv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.</span></span><span class="sig-name descname"><span class="pre">PersHSS_Priv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lmstypecodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otstypecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cores</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/pershss.html#PersHSS_Priv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.PersHSS_Priv" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hsslms.hss.HSS_Priv" title="hsslms.hss.HSS_Priv"><code class="xref py py-class docutils literal notranslate"><span class="pre">hsslms.hss.HSS_Priv</span></code></a></p>
+<p>A class derived from HSS_Priv.</p>
+<p>It is used to generate the private key and
+derive the public key of a Hierarchical Signature System (HSS)
+The private key is signed and stored in an encrypted file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lmstypecodes</strong> – List of LMS_ALGORITHM_TYPE</p></li>
+<li><p><strong>otstypecode</strong> – LMOTS_ALGORITHM_TYPE</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – holds the name of the file to store the key</p></li>
+<li><p><strong>password</strong> (<em>bytes</em>) – password to sign and encrypt the file</p></li>
+<li><p><strong>frequence</strong> (<em>int</em>) – frequnce at which the key is stored to a file</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hsslms.PersHSS_Priv.FILEHEADER">
+<span class="sig-name descname"><span class="pre">FILEHEADER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b'PersHSS_Priv_v\x000.1.1'</span></em><a class="headerlink" href="#hsslms.PersHSS_Priv.FILEHEADER" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.PersHSS_Priv.from_file">
+<span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/pershss.html#PersHSS_Priv.from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.PersHSS_Priv.from_file" title="Permalink to this definition"></a></dt>
+<dd><p>A key, HSS_Priv, is loaded from a password-protected file.</p>
+<p>Frequnce signatures are skipped to ensure that no private key is used
+more than once.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – name of the file</p></li>
+<li><p><strong>password</strong> (<em>bytes</em>) – password of the file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.FAILURE" title="hsslms.FAILURE"><strong>FAILURE</strong></a> – if the key cannot be loaded</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>HSS_Priv</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.PersHSS_Priv.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/pershss.html#PersHSS_Priv.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.PersHSS_Priv.save" title="Permalink to this definition"></a></dt>
+<dd><p>The key is saved.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.PersHSS_Priv.sign">
+<span class="sig-name descname"><span class="pre">sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/pershss.html#PersHSS_Priv.sign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.PersHSS_Priv.sign" title="Permalink to this definition"></a></dt>
+<dd><p>Signs the message with the private key associated with the class.</p>
+<p>The key is automatically stored to disk after frequnce signatures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>bytes</em><em>, </em><em>BufferedReader</em>) – Message to be signed</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#hsslms.FAILURE" title="hsslms.FAILURE"><strong>FAILURE</strong></a> – If a signature has already been computed, or for other
+    technical reason</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The signature to <cite>message</cite>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="src" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Vögeler.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
