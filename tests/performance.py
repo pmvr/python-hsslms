@@ -27,6 +27,8 @@ for lmots_alg in LMOTS_ALGORITHM_TYPE:
     print("  Performance of Key Generation:")
     print("           %10s %15s" %('Time[s]', '#Signatures'))
     
+    duration = perf_keygen([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H5], lmots_alg, num_cores)
+    print("      H5: %11.2f %15d" % (duration, 2**5))
     duration = perf_keygen([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10], lmots_alg, num_cores)
     print("      H10: %10.2f %15d" % (duration, 2**10))
     duration = perf_keygen([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15], lmots_alg, num_cores)
@@ -45,11 +47,11 @@ for lmots_alg in LMOTS_ALGORITHM_TYPE:
     print("           %10s" % 'Time[s]')
     sk = HSS_Priv([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15], lmots_alg, num_cores)
     duration = 0.0
-    for _ in range(1000):
+    for _ in range(100):
         start = time.time()
         _ = sk.sign(b'abc')
         duration += time.time() - start
-    duration /= 1000
+    duration /= 100
     print("      H15: %10.3f" % duration)
     
     print()
@@ -58,12 +60,12 @@ for lmots_alg in LMOTS_ALGORITHM_TYPE:
     sk = HSS_Priv([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15], lmots_alg, num_cores)
     vk = sk.gen_pub()
     duration = 0.0
-    for _ in range(1000):
+    for _ in range(100):
         signature = sk.sign(b'abc')
         start = time.time()
         vk.verify(b'abc', signature)
         duration += time.time() - start
-    duration /= 1000
+    duration /= 100
     print("      H15: %10.3f" % duration)
     print()
     print()

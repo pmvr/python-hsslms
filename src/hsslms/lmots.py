@@ -157,21 +157,26 @@ class LM_OTS_Priv:
         self.used = True
         return signature
 
+    def gen_pub_K(self):
+        u32str_q = u32str(self.q)
+        K = self.H(self.I + u32str_q + D_PBLC)
+        u8str_j = [u8str(j) for j in range(2**self.w - 1)]
+        for i in range(self.p):
+            tmp = self.x[i]
+            Iqi = self.I + u32str_q + u16str(i)
+            for j in u8str_j:
+                tmp = self.H(Iqi + j + tmp).digest()
+            K.update(tmp)
+        return K.digest()
+    
     def gen_pub(self):
         """Computes the public key associated with the private key in this class.
         
         Returns:
             LM_OTS_Pub: The public key belonging to this private key.
         """
-        u32str_q = u32str(self.q)
-        K = self.H(self.I + u32str_q + D_PBLC)
-        u8str_j = [u8str(j) for j in range(2**self.w - 1)]
-        for i, tmp in zip([u16str(i) for i in range(self.p)], self.x):
-            for j in u8str_j:
-                tmp = self.H(self.I + u32str_q + i + j + tmp).digest()
-            K.update(tmp)
-        return LM_OTS_Pub(self.typecode + self.I + u32str_q  + K.digest())
+        return LM_OTS_Pub(self.typecode + self.I + u32str(self.q)  + self.gen_pub_K())
     
-
-    def __repr__(self):
-        return str(self.typecode + self.I + u32str(self.q) + b''.join(self.x))
+    
+        def __repr__(self):
+            return str(self.typecode + self.I + u32str(self.q) + b''.join(self.x))

@@ -155,7 +155,7 @@ class LMS_Priv:
         num_cores (int, None, optional): the number of CPU cores used for key generation, None=all cores
     """
     def _calc_leafs(x, H, *l):
-        OTS_PUB_HASH = x.gen_pub().K
+        OTS_PUB_HASH = x.gen_pub_K()
         return H(b''.join(l) + OTS_PUB_HASH).digest()
     def _calc_knots(H, *l):
         return H(b''.join(l)).digest()

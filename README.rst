@@ -1,0 +1,134 @@
+python-hsslms
+=============
+
+This is an implementation of Leighton-Micali Hash-Based Signatures in
+Python according to `RFC
+8554 <https://www.rfc-editor.org/rfc/rfc8554.html>`__.
+
+The implementation is meant as a reference and for educational purposes.
+
+The implementation provides 4 classes: \* LM-OTS One-Time Signatures.
+These are one-time signatures; each private key MUST be used at most one
+time to sign a message. \* Leighton-Micali Signatures (LMS). This system
+holds a fixed number of one-time signatures, i.e. LM-OTS. \*
+Hierarchical Signatures (HSS). This system uses a sequence of LMS. \*
+Persistent Hierarchical Signatures (PersHSS). The same as HSS except
+that the private key is stored in an encrypted file.
+
+Installation
+------------
+
+.. code:: bash
+
+   python3 -m pip install hsslms
+
+Example Usage
+-------------
+
+LM-OTS
+^^^^^^
+
+.. code:: python
+
+   from os import urandom
+   from hsslms import LM_OTS_Priv
+
+   # generate a one-time private key
+   sk = LM_OTS_Priv(LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2, urandom(16), 0)
+   # sign a message with the private key
+   signature = sk.sign(b'abc')
+   # compute the related public key
+   vk = sk.gen_pub()
+   # verify the signature, if invalid an exception will be raised
+   vk.verify(b'abc', signature)
+
+LMS
+^^^
+
+.. code:: python
+
+   from os import urandom
+   from hsslms import LMS_Priv
+
+   # generate a private key
+   sk = LMS_Priv(LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10, LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W8)
+   # sign a message with the private key, in total 2^10 signatures are available
+   signature = sk.sign(b'abc')
+   # compute the related public key
+   vk = sk.gen_pub()
+   # verify the signature, if invalid an exception will be raised
+   vk.verify(b'abc', signature)
+
+HSS
+^^^
+
+.. code:: python
+
+   from os import urandom
+   from hsslms import HSS_Priv
+
+   # generate a private key
+   sk = HSS_Priv([LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10]*2, LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W1)
+   # sign a message with the private key, in total 2^20 signatures are available
+   signature = sk.sign(b'abc')
+   # compute the related public key
+   vk = sk.gen_pub()
+   # verify the signature, if invalid an exception will be raised
+   vk.verify(b'abc', signature)
+
+Performance Measurements
+------------------------
+
+The measurements are done on a Ryzen 5800X, where multiprocessing
+features are used with 6 cores.
+
+Key Generation
+^^^^^^^^^^^^^^
+
++----------+-----+-----+-----+-----+-------------+------+------+------+-------+
+| Key-Type | Time[s]               | #Signatures | Size of Signature          |
++==========+=====+=====+=====+=====+=============+======+======+======+=======+
+| w        | 1   | 2   | 4   | 8   |             | 1    | 2    | 4    | 8     |
++----------+-----+-----+-----+-----+-------------+------+------+------+-------+
+| H5       | 0.1 | 0.1 | 0.1 | 0.1 | 1024        | 8848 | 4624 | 2512 | 1456  |
++----------+-----+-----+-----+-----+-------------+------+------+------+-------+
+| H10      | 0.3 | 0.2 | 0.2 | 0.7 | 1024        | 8848 | 4624 | 2512 | 1456  |
++----------+-----+-----+-----+-----+-------------+------+------+------+-------+
+| H15      | 8.0 | 4.6 | 4.3 | 20.2| 32768       | 9008 | 4784 | 2672 | 1616  |
++----------+-----+-----+-----+-----+-------------+------+------+------+-------+
+| H20      | 293 | 161 | 137 | 643 | 1048576     | 9168 | 4944 | 2832 | 1776  |
++----------+-----+-----+-----+-----+-------------+------+------+------+-------+
+| H10/H10  | 0.6 | 0.5 | 0.5 | 1.4 | 1048576     | 17748| 9300 | 5076 | 2964  |
++----------+-----+-----+-----+-----+-------------+------+------+------+-------+
+| H10/H15  | 8.1 | 4.6 | 4.2 | 21.1| 33554432    | 17908| 9460 | 5236 | 3124  |
++----------+-----+-----+-----+-----+-------------+------+------+------+-------+
+| H15/H15  | 15.7| 10.4| 8.9 | 40.0| 1073741824  | 18068| 9620 | 5396 | 3284  |
++----------+-----+-----+-----+-----+-------------+------+------+------+-------+
+
+
+Performance of Signature Generation:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
++----------+-------+-------+-------+-------+
+| Key-Type | Time[s]                       |
++==========+=======+=======+=======+=======+
+| w        |  1    |  2    |  4    |  8    |
++----------+-------+-------+-------+-------+
+| H15      | 0.001 | 0.001 | 0.001 | 0.005 |
++----------+-------+-------+-------+-------+
+
+Performance of Signature Verification:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
++----------+-------+-------+-------+-------+
+| Key-Type | Time[s]                       |
++==========+=======+=======+=======+=======+
+| w        |  1    |  2    |  4    |  8    |
++----------+-------+-------+-------+-------+
+| H15      | 0.001 | 0.001 | 0.001 | 0.004 |
++----------+-------+-------+-------+-------+
+
+License
+=======
+
+`MIT <https://opensource.org/licenses/MIT>`__
