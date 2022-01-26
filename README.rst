@@ -2,18 +2,16 @@ python-hsslms
 =============
 
 This is an implementation of Leighton-Micali Hash-Based Signatures in
-Python according to `RFC
-8554 <https://www.rfc-editor.org/rfc/rfc8554.html>`__.
+Python according to `RFC 8554 <https://www.rfc-editor.org/rfc/rfc8554.html>`_.
 
 The implementation is meant as a reference and for educational purposes.
 
-The implementation provides 4 classes: \* LM-OTS One-Time Signatures.
-These are one-time signatures; each private key MUST be used at most one
-time to sign a message. \* Leighton-Micali Signatures (LMS). This system
-holds a fixed number of one-time signatures, i.e. LM-OTS. \*
-Hierarchical Signatures (HSS). This system uses a sequence of LMS. \*
-Persistent Hierarchical Signatures (PersHSS). The same as HSS except
-that the private key is stored in an encrypted file.
+The implementation provides 4 classes: 
+
+* LM-OTS One-Time Signatures. These are one-time signatures; each private key MUST be used at most one time to sign a message. 
+* Leighton-Micali Signatures (LMS). This systemholds a fixed number of one-time signatures, i.e. LM-OTS. 
+* Hierarchical Signatures (HSS). This system uses a sequence of LMS.
+* Persistent Hierarchical Signatures (PersHSS). The same as HSS except that the private key is stored in an encrypted file.
 
 Installation
 ------------
