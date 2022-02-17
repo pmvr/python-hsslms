@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>hsslms package &mdash; HssLms 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -79,12 +78,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="hsslms-package">
+  <div class="section" id="hsslms-package">
 <h1>hsslms package<a class="headerlink" href="#hsslms-package" title="Permalink to this headline"></a></h1>
-<section id="submodules">
+<div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
-</section>
-<section id="module-hsslms.hss">
+</div>
+<div class="section" id="module-hsslms.hss">
 <span id="hsslms-hss-module"></span><h2>hsslms.hss module<a class="headerlink" href="#module-hsslms.hss" title="Permalink to this headline"></a></h2>
 <p>Hierarchical Signatures</p>
 <p>For reference see RFC 8554, section 6.</p>
@@ -208,14 +207,14 @@ with the class.</p>
 
 </dd></dl>
 
-</section>
-<section id="module-hsslms.lmots">
+</div>
+<div class="section" id="module-hsslms.lmots">
 <span id="hsslms-lmots-module"></span><h2>hsslms.lmots module<a class="headerlink" href="#module-hsslms.lmots" title="Permalink to this headline"></a></h2>
 <p>LM-OTS One-Time Signatures</p>
 <p>For reference see RFC 8554, section 4.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="hsslms.lmots.LM_OTS_Priv">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.lmots.</span></span><span class="sig-name descname"><span class="pre">LM_OTS_Priv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Priv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lmots.LM_OTS_Priv" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.lmots.</span></span><span class="sig-name descname"><span class="pre">LM_OTS_Priv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SEED</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Priv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lmots.LM_OTS_Priv" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A class used to hold the private key of LM-OTS One-Time Signatures (LMOTS)</p>
 <p>For a reference see RFC 8554, section 4.</p>
@@ -226,6 +225,7 @@ with the class.</p>
 <li><p><strong>typecode</strong> (<a class="reference internal" href="#hsslms.utils.LMOTS_ALGORITHM_TYPE" title="hsslms.utils.LMOTS_ALGORITHM_TYPE"><em>LMOTS_ALGORITHM_TYPE</em></a>) – Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types</p></li>
 <li><p><strong>I</strong> (<em>bytes</em>) – 16 random bytes</p></li>
 <li><p><strong>q</strong> (<em>int</em>) – 32-bit number / no.</p></li>
+<li><p><strong>SEED</strong> (<em>bytes</em>) – 32 random bytes for PRNG for LM_OTS</p></li>
 </ul>
 </dd>
 </dl>
@@ -242,6 +242,11 @@ with the class.</p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.lmots.LM_OTS_Priv.gen_pub_K">
+<span class="sig-name descname"><span class="pre">gen_pub_K</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Priv.gen_pub_K"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.lmots.LM_OTS_Priv.gen_pub_K" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hsslms.lmots.LM_OTS_Priv.sign">
@@ -299,8 +304,8 @@ with the class.</p>
 
 </dd></dl>
 
-</section>
-<section id="module-hsslms.lms">
+</div>
+<div class="section" id="module-hsslms.lms">
 <span id="hsslms-lms-module"></span><h2>hsslms.lms module<a class="headerlink" href="#module-hsslms.lms" title="Permalink to this headline"></a></h2>
 <p>Leighton-Micali Signatures</p>
 <p>For reference see RFC 8554, section 5.</p>
@@ -418,8 +423,8 @@ with the class.</p>
 
 </dd></dl>
 
-</section>
-<section id="module-hsslms.pershss">
+</div>
+<div class="section" id="module-hsslms.pershss">
 <span id="hsslms-pershss-module"></span><h2>hsslms.pershss module<a class="headerlink" href="#module-hsslms.pershss" title="Permalink to this headline"></a></h2>
 <p>Created on Sat Jan  1 20:00:55 2022</p>
 <p>&#64;author: mvr</p>
@@ -444,7 +449,7 @@ The private key is signed and stored in an encrypted file.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="hsslms.pershss.PersHSS_Priv.FILEHEADER">
-<span class="sig-name descname"><span class="pre">FILEHEADER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b'PersHSS_Priv_v\x000.1.1'</span></em><a class="headerlink" href="#hsslms.pershss.PersHSS_Priv.FILEHEADER" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">FILEHEADER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b'PersHSS_Priv_v\x000.1.2'</span></em><a class="headerlink" href="#hsslms.pershss.PersHSS_Priv.FILEHEADER" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -504,8 +509,8 @@ more than once.</p>
 <span class="sig-prename descclassname"><span class="pre">hsslms.pershss.</span></span><span class="sig-name descname"><span class="pre">kdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">salt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/pershss.html#kdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.pershss.kdf" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-</section>
-<section id="module-hsslms.restricted_unpickler">
+</div>
+<div class="section" id="module-hsslms.restricted_unpickler">
 <span id="hsslms-restricted-unpickler-module"></span><h2>hsslms.restricted_unpickler module<a class="headerlink" href="#module-hsslms.restricted_unpickler" title="Permalink to this headline"></a></h2>
 <p>This module is for safe unpickling a HSS Private Key.</p>
 <dl class="py class">
@@ -532,8 +537,8 @@ needed.  Both arguments passed are str objects.</p>
 <dd><p>Helper function analogous to pickle.loads().</p>
 </dd></dl>
 
-</section>
-<section id="module-hsslms.utils">
+</div>
+<div class="section" id="module-hsslms.utils">
 <span id="hsslms-utils-module"></span><h2>hsslms.utils module<a class="headerlink" href="#module-hsslms.utils" title="Permalink to this headline"></a></h2>
 <p>Created on Sat Jan  1 11:48:07 2022</p>
 <p>&#64;author: mvr</p>
@@ -758,8 +763,8 @@ needed.  Both arguments passed are str objects.</p>
 <span class="sig-prename descclassname"><span class="pre">hsslms.utils.</span></span><span class="sig-name descname"><span class="pre">u8str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/utils.html#u8str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.utils.u8str" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-</section>
-<section id="module-hsslms">
+</div>
+<div class="section" id="module-hsslms">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-hsslms" title="Permalink to this headline"></a></h2>
 <p>Leighton-Micali Hash-Based Signatures</p>
 <p>This modulue provides an implementation of Leighton-Micali Hash-Based Signatures
@@ -1235,7 +1240,7 @@ with the class.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="hsslms.LM_OTS_Priv">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.</span></span><span class="sig-name descname"><span class="pre">LM_OTS_Priv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Priv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LM_OTS_Priv" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hsslms.</span></span><span class="sig-name descname"><span class="pre">LM_OTS_Priv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typecode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SEED</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Priv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LM_OTS_Priv" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A class used to hold the private key of LM-OTS One-Time Signatures (LMOTS)</p>
 <p>For a reference see RFC 8554, section 4.</p>
@@ -1246,6 +1251,7 @@ with the class.</p>
 <li><p><strong>typecode</strong> (<a class="reference internal" href="#hsslms.LMOTS_ALGORITHM_TYPE" title="hsslms.LMOTS_ALGORITHM_TYPE"><em>LMOTS_ALGORITHM_TYPE</em></a>) – Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types</p></li>
 <li><p><strong>I</strong> (<em>bytes</em>) – 16 random bytes</p></li>
 <li><p><strong>q</strong> (<em>int</em>) – 32-bit number / no.</p></li>
+<li><p><strong>SEED</strong> (<em>bytes</em>) – 32 random bytes for PRNG for LM_OTS</p></li>
 </ul>
 </dd>
 </dl>
@@ -1262,6 +1268,11 @@ with the class.</p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hsslms.LM_OTS_Priv.gen_pub_K">
+<span class="sig-name descname"><span class="pre">gen_pub_K</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hsslms/lmots.html#LM_OTS_Priv.gen_pub_K"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hsslms.LM_OTS_Priv.gen_pub_K" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="hsslms.LM_OTS_Priv.sign">
@@ -1340,7 +1351,7 @@ The private key is signed and stored in an encrypted file.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="hsslms.PersHSS_Priv.FILEHEADER">
-<span class="sig-name descname"><span class="pre">FILEHEADER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b'PersHSS_Priv_v\x000.1.1'</span></em><a class="headerlink" href="#hsslms.PersHSS_Priv.FILEHEADER" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">FILEHEADER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b'PersHSS_Priv_v\x000.1.2'</span></em><a class="headerlink" href="#hsslms.PersHSS_Priv.FILEHEADER" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1395,8 +1406,8 @@ more than once.</p>
 
 </dd></dl>
 
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
