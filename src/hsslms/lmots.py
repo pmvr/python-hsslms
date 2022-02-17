@@ -102,14 +102,15 @@ class LM_OTS_Priv:
         typecode (LMOTS_ALGORITHM_TYPE): Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types
         I (bytes): 16 random bytes
         q (int): 32-bit number / no.
+        SEED (bytes): 32 random bytes for PRNG for LM_OTS
     """
     
-    def __init__(self, typecode, I, q):
+    def __init__(self, typecode, I, q, SEED):
         self.I = I
         self.q = q
         self.H, self.n, self.w, self.p, self.ls = typecode.H, typecode.n, typecode.w, typecode.p, typecode.ls
         self.typecode = u32str(typecode.value)
-        self.x = [token_bytes(self.n) for _ in range(self.p)]
+        self.x = [self.H(self.I + u32str(self.q) + u16str(i) + b'\xff' + SEED).digest() for i in range(self.p)]
         self.used = False
 
     def sign(self, message):

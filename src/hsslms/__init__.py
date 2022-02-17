@@ -52,7 +52,7 @@ Example:
 """
 
 __all__ = ['INVALID', 'FAILURE', 'LMOTS_ALGORITHM_TYPE', 'LMS_ALGORITHM_TYPE', 'LM_OTS_Pub', 'LM_OTS_Priv', 'LMS_Pub', 'LMS_Priv', 'HSS_Pub', 'HSS_Priv', 'PersHSS_Priv']
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 
 from .utils import INVALID, FAILURE
 from .utils import LMOTS_ALGORITHM_TYPE, LMS_ALGORITHM_TYPE

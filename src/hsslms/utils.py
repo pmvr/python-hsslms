@@ -29,10 +29,10 @@ def strTou32(S):
     return int.from_bytes(S, 'big')
 
 def coef(S, i, w):
-    return (2**w - 1) & (S[(i*w)//8] >> (8 - (w * (i % (8 // w)) + w))) 
+    return (2**w - 1) & (S[(i*w) >> 3] >> (8 - (w * (i % (8 // w)) + w))) 
 
 def cksm(S, w, n, ls):
-    return u16str(sum([2**w - 1 - coef(S,i,w) for i in range((n*8)//w)]) << ls)
+    return u16str(((2**w - 1)*((n*8)//w) - sum([coef(S,i,w) for i in range((n*8)//w)])) << ls)
     
 
 D_PBLC = u16str(0x8080)

@@ -154,11 +154,11 @@ class LMS_Priv:
         otstypecode (LMOTS_ALGORITHM_TYPE): Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types
         num_cores (int, None, optional): the number of CPU cores used for key generation, None=all cores
     """
-    def _calc_leafs(x, H, *l):
-        OTS_PUB_HASH = x.gen_pub_K()
-        return H(b''.join(l) + OTS_PUB_HASH).digest()
-    def _calc_knots(H, *l):
-        return H(b''.join(l)).digest()
+    def _calc_leafs(H, I, r, h, otstypecode, SEED):
+        OTS_PRIV = LM_OTS_Priv(otstypecode, I, r-2**h, SEED)
+        return H(I + u32str(r) + D_LEAF + OTS_PRIV.gen_pub_K()).digest()
+    def _calc_knots(H, I, r, Tl, Tr):
+        return H(I + u32str(r) + D_INTR + Tl + Tr).digest()
     
     def __init__(self, typecode, otstypecode, num_cores=None):
         if num_cores is None:
@@ -166,13 +166,13 @@ class LMS_Priv:
         self.typecode = typecode
         self.otstypecode = otstypecode
         self.H, self.m, self.h = self.typecode.H, self.typecode.m, self.typecode.h
+        self.SEED = token_bytes(self.m)
         self.I = token_bytes(16)
         with Pool(num_cores) as p:
-            self.OTS_PRIV = p.starmap(LM_OTS_Priv, ((self.otstypecode, self.I, q) for q in range(2**self.h)))
             self.T = [None]*(2**(self.h+1))
-            self.T[2**self.h : 2**(self.h+1)] = p.starmap(LMS_Priv._calc_leafs, ((self.OTS_PRIV[r-2**self.h], self.H, self.I, u32str(r), D_LEAF) for r in range(2**self.h, 2**(self.h+1))))
+            self.T[2**self.h : 2**(self.h+1)] = p.starmap(LMS_Priv._calc_leafs, ((self.H, self.I, r, self.h, self.otstypecode, self.SEED) for r in range(2**self.h, 2**(self.h+1))))
             for i in range(self.h-1, -1, -1):
-                self.T[2**i : 2**(i+1)] = p.starmap(LMS_Priv._calc_knots, ((self.H, self.I, u32str(r), D_INTR, self.T[2*r], self.T[2*r+1]) for r in range(2**i, 2**(i+1))))
+                self.T[2**i : 2**(i+1)] = p.starmap(LMS_Priv._calc_knots, ((self.H, self.I, r, self.T[2*r], self.T[2*r+1]) for r in range(2**i, 2**(i+1))))
         self.q = 0
         
     def sign(self, message):
@@ -192,7 +192,7 @@ class LMS_Priv:
         """
         if self.q >= 2**self.h:
             raise FAILURE("Private keys exhausted.")
-        lmots_signature = self.OTS_PRIV[self.q].sign(message)
+        lmots_signature = LM_OTS_Priv(self.otstypecode, self.I, self.q, self.SEED).sign(message)
         signature = u32str(self.q) + lmots_signature + u32str(self.typecode.value)
         r = 2**self.h + self.q
         for i in range(self.h):
@@ -217,5 +217,5 @@ class LMS_Priv:
         Returns:
             int: The remaining number of signatures that can be generated.
         """
-        return len(self.OTS_PRIV) - self.q
+        return 2**self.h - self.q
     

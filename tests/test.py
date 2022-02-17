@@ -16,21 +16,21 @@ class Test_LMS_OTS(unittest.TestCase):
 
     def test_lm_ots_typecodes_pass(self):
         for typecode in LMOTS_ALGORITHM_TYPE:
-            sk = LM_OTS_Priv(typecode, token_bytes(16), 0)
+            sk = LM_OTS_Priv(typecode, token_bytes(16), 0, token_bytes(32))
             signature = sk.sign(b'abc')
             vk = sk.gen_pub()
             self.assertIsNone(vk.verify(b'abc', signature), "Verify is not None.")
         
     def test_lm_ots_typecodes_fail(self):
         for typecode in LMOTS_ALGORITHM_TYPE:
-            sk = LM_OTS_Priv(typecode, token_bytes(16), 0)
+            sk = LM_OTS_Priv(typecode, token_bytes(16), 0, token_bytes(32))
             signature = sk.sign(b'abc')
             vk = sk.gen_pub()
             with self.assertRaises(INVALID):
                 vk.verify(b'', signature)
         
     def test_lm_ots_sign_failure(self):
-        sk = LM_OTS_Priv(LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2, token_bytes(16), 0)
+        sk = LM_OTS_Priv(LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2, token_bytes(16), 0, token_bytes(32))
         sk.sign(b'abc')
         with self.assertRaises(FAILURE):
             sk.sign(b'abc')
