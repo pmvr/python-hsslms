@@ -58,16 +58,16 @@ class LM_OTS_Pub:
                 raise FAILURE("Error. Cannot read message.")
         else:
             raise FAILURE("Invalid message type.")
-        Q = Q.digest()
+        Q = Q.digest()[:n]
         Qa = Q + cksm(Q, w, n, ls)
         Kc = H(self.I + self.q + D_PBLC)
         for i in range(p):
             a = coef(Qa, i, w)
             tmp = signature[4+n+i*n : 4+n+(i+1)*n]  # y[i]
             for j in range(a, 2**w - 1):
-                tmp = H(self.I + self.q + u16str(i) + u8str(j) + tmp).digest()
+                tmp = H(self.I + self.q + u16str(i) + u8str(j) + tmp).digest()[:n]
             Kc.update(tmp)  # z
-        return Kc.digest()  # Kc
+        return Kc.digest()[:n]  # Kc
         
     
     def verify(self, message, signature):
@@ -110,7 +110,7 @@ class LM_OTS_Priv:
         self.q = q
         self.H, self.n, self.w, self.p, self.ls = typecode.H, typecode.n, typecode.w, typecode.p, typecode.ls
         self.typecode = u32str(typecode.value)
-        self.x = [self.H(self.I + u32str(self.q) + u16str(i) + b'\xff' + SEED).digest() for i in range(self.p)]
+        self.x = [self.H(self.I + u32str(self.q) + u16str(i) + b'\xff' + SEED).digest()[:self.n] for i in range(self.p)]
         self.used = False
 
     def sign(self, message):
@@ -147,13 +147,13 @@ class LM_OTS_Priv:
                 raise FAILURE("Error. Cannot read message.")
         else:
             raise FAILURE("Invalid message type.")
-        Q = Q.digest()
+        Q = Q.digest()[:self.n]
         Qa = Q + cksm(Q, self.w, self.n, self.ls)
         for i in range(self.p):
             a = coef(Qa, i, self.w)
             tmp = self.x[i]
             for j in range(a):
-                tmp = self.H(self.I + u32str(self.q) + u16str(i) + u8str(j) + tmp).digest()
+                tmp = self.H(self.I + u32str(self.q) + u16str(i) + u8str(j) + tmp).digest()[:self.n]
             signature += tmp  # y
         self.used = True
         return signature
@@ -166,9 +166,9 @@ class LM_OTS_Priv:
             tmp = self.x[i]
             Iqi = self.I + u32str_q + u16str(i)
             for j in u8str_j:
-                tmp = self.H(Iqi + j + tmp).digest()
+                tmp = self.H(Iqi + j + tmp).digest()[:self.n]
             K.update(tmp)
-        return K.digest()
+        return K.digest()[:self.n]
     
     def gen_pub(self):
         """Computes the public key associated with the private key in this class.
