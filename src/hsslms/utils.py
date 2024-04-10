@@ -55,21 +55,30 @@ class LMOTS_ALGORITHM_TYPE(Enum):
     LMOTS_SHA256_N32_W2  = 2
     LMOTS_SHA256_N32_W4  = 3
     LMOTS_SHA256_N32_W8  = 4
+    
+    LMOTS_SHA256_N24_W1  = 5
+    LMOTS_SHA256_N24_W2  = 6
+    LMOTS_SHA256_N24_W4  = 7
+    LMOTS_SHA256_N24_W8  = 8
+
     @property
     def H(self):
         return sha256
     @property
     def n(self):
-        return 32
+        if 'N32' in self.name:
+            return 32
+        else:
+            return 24
     @property
     def w(self):
-        return {1:1, 2:2, 3:4, 4:8}[self.value]
+        return {1:1, 2:2, 3:4, 4:8, 5:1, 6:2, 7:4, 8:8}[self.value]
     @property
     def p(self):
-        return {1:265, 2:133, 3:67, 4:34}[self.value]
+        return {1:265, 2:133, 3:67, 4:34, 5:200, 6:101, 7:51, 8:26}[self.value]
     @property
     def ls(self):
-        return {1:7, 2:6, 3:4, 4:0}[self.value]
+        return {1:7, 2:6, 3:4, 4:0, 5:8, 6:6, 7:4, 8:0}[self.value]
 
 
 class LMS_ALGORITHM_TYPE(Enum):
@@ -85,12 +94,23 @@ class LMS_ALGORITHM_TYPE(Enum):
     LMS_SHA256_M32_H15 = 7
     LMS_SHA256_M32_H20 = 8
     LMS_SHA256_M32_H25 = 9
+
+    LMS_SHA256_M24_H5 = 10
+    LMS_SHA256_M24_H10 = 11
+    LMS_SHA256_M24_H15 = 12
+    LMS_SHA256_M24_H20 = 13
+    LMS_SHA256_M24_H25 = 14
+
     @property
     def H(self):
         return sha256
+
     @property
     def m(self):
-        return 32
+        if 'M32' in self.name:
+            return 32
+        else:
+            return 24
     @property
     def h(self):
-        return {5:5, 6:10, 7:15, 8:20, 9:25}[self.value]
+        return {5:5, 6:10, 7:15, 8:20, 9:25, 10:5, 11:10, 12:15, 13:20, 14:25}[self.value]

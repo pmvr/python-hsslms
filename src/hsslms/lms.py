@@ -80,14 +80,14 @@ class LMS_Pub:
         OTS_PUB = LM_OTS_Pub(lmots_signature[:4] + self.I + u32str(q)  + b'\x00'*n)
         Kc = OTS_PUB._algo4b(message, lmots_signature)
         node_num = 2**self.h + q
-        tmp = self.H(self.I + u32str(node_num) + D_LEAF + Kc).digest()
+        tmp = self.H(self.I + u32str(node_num) + D_LEAF + Kc).digest()[:self.m]
         i = 0
         while node_num > 1:
             path = signature[12+n*(p+1)+i*self.m:12+n*(p+1)+(i+1)*self.m]
             if node_num % 2 == 1:
-                tmp = self.H(self.I + u32str(node_num//2) + D_INTR + path + tmp).digest()
+                tmp = self.H(self.I + u32str(node_num//2) + D_INTR + path + tmp).digest()[:self.m]
             else:
-                tmp = self.H(self.I + u32str(node_num//2) + D_INTR + tmp + path).digest()
+                tmp = self.H(self.I + u32str(node_num//2) + D_INTR + tmp + path).digest()[:self.m]
             node_num >>= 1
             i += 1
         return tmp  # Tc
@@ -156,9 +156,9 @@ class LMS_Priv:
     """
     def _calc_leafs(H, I, r, h, otstypecode, SEED):
         OTS_PRIV = LM_OTS_Priv(otstypecode, I, r-2**h, SEED)
-        return H(I + u32str(r) + D_LEAF + OTS_PRIV.gen_pub_K()).digest()
-    def _calc_knots(H, I, r, Tl, Tr):
-        return H(I + u32str(r) + D_INTR + Tl + Tr).digest()
+        return H(I + u32str(r) + D_LEAF + OTS_PRIV.gen_pub_K()).digest()[:otstypecode.n]
+    def _calc_knots(H, I, r, Tl, Tr, m):
+        return H(I + u32str(r) + D_INTR + Tl + Tr).digest()[:m]
     
     def __init__(self, typecode, otstypecode, num_cores=None):
         if num_cores is None:
@@ -172,7 +172,7 @@ class LMS_Priv:
             self.T = [None]*(2**(self.h+1))
             self.T[2**self.h : 2**(self.h+1)] = p.starmap(LMS_Priv._calc_leafs, ((self.H, self.I, r, self.h, self.otstypecode, self.SEED) for r in range(2**self.h, 2**(self.h+1))))
             for i in range(self.h-1, -1, -1):
-                self.T[2**i : 2**(i+1)] = p.starmap(LMS_Priv._calc_knots, ((self.H, self.I, r, self.T[2*r], self.T[2*r+1]) for r in range(2**i, 2**(i+1))))
+                self.T[2**i : 2**(i+1)] = p.starmap(LMS_Priv._calc_knots, ((self.H, self.I, r, self.T[2*r], self.T[2*r+1], self.m) for r in range(2**i, 2**(i+1))))
         self.q = 0
         
     def sign(self, message):
