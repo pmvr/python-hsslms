@@ -52,6 +52,14 @@ hsslms.utils module
    :undoc-members:
    :show-inheritance:
 
+hsslms.lmswrapper module
+-------------------
+
+.. automodule:: hsslms.lmswrapper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

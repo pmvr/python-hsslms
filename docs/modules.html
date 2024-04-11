@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>src &mdash; HssLms 0.1.0 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>src &mdash; HssLms 0.1.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -26,11 +30,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> HssLms
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            HssLms
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -57,8 +65,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>src</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">src</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -68,24 +76,230 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="src">
-<h1>src<a class="headerlink" href="#src" title="Permalink to this headline"></a></h1>
+  <section id="src">
+<h1>src<a class="headerlink" href="#src" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="hsslms.html">hsslms package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="hsslms.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hsslms.html#module-hsslms.hss">hsslms.hss module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hsslms.html#module-hsslms.lmots">hsslms.lmots module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hsslms.html#module-hsslms.lms">hsslms.lms module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hsslms.html#module-hsslms.pershss">hsslms.pershss module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hsslms.html#module-hsslms.restricted_unpickler">hsslms.restricted_unpickler module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hsslms.html#module-hsslms.utils">hsslms.utils module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hsslms.html#module-hsslms">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hsslms.html#module-hsslms.hss">hsslms.hss module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.hss.HSS_Priv"><code class="docutils literal notranslate"><span class="pre">HSS_Priv</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.hss.HSS_Priv.gen_pub"><code class="docutils literal notranslate"><span class="pre">HSS_Priv.gen_pub()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.hss.HSS_Priv.get_avail_signatures"><code class="docutils literal notranslate"><span class="pre">HSS_Priv.get_avail_signatures()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.hss.HSS_Priv.info"><code class="docutils literal notranslate"><span class="pre">HSS_Priv.info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.hss.HSS_Priv.sign"><code class="docutils literal notranslate"><span class="pre">HSS_Priv.sign()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.hss.HSS_Pub"><code class="docutils literal notranslate"><span class="pre">HSS_Pub</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.hss.HSS_Pub.get_pubkey"><code class="docutils literal notranslate"><span class="pre">HSS_Pub.get_pubkey()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.hss.HSS_Pub.info"><code class="docutils literal notranslate"><span class="pre">HSS_Pub.info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.hss.HSS_Pub.verify"><code class="docutils literal notranslate"><span class="pre">HSS_Pub.verify()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hsslms.html#module-hsslms.lmots">hsslms.lmots module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.lmots.LM_OTS_Priv"><code class="docutils literal notranslate"><span class="pre">LM_OTS_Priv</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lmots.LM_OTS_Priv.gen_pub"><code class="docutils literal notranslate"><span class="pre">LM_OTS_Priv.gen_pub()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lmots.LM_OTS_Priv.gen_pub_K"><code class="docutils literal notranslate"><span class="pre">LM_OTS_Priv.gen_pub_K()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lmots.LM_OTS_Priv.sign"><code class="docutils literal notranslate"><span class="pre">LM_OTS_Priv.sign()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.lmots.LM_OTS_Pub"><code class="docutils literal notranslate"><span class="pre">LM_OTS_Pub</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lmots.LM_OTS_Pub.verify"><code class="docutils literal notranslate"><span class="pre">LM_OTS_Pub.verify()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hsslms.html#module-hsslms.lms">hsslms.lms module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.lms.LMS_Priv"><code class="docutils literal notranslate"><span class="pre">LMS_Priv</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lms.LMS_Priv.gen_pub"><code class="docutils literal notranslate"><span class="pre">LMS_Priv.gen_pub()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lms.LMS_Priv.get_avail_signatures"><code class="docutils literal notranslate"><span class="pre">LMS_Priv.get_avail_signatures()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lms.LMS_Priv.sign"><code class="docutils literal notranslate"><span class="pre">LMS_Priv.sign()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.lms.LMS_Pub"><code class="docutils literal notranslate"><span class="pre">LMS_Pub</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lms.LMS_Pub.get_pubkey"><code class="docutils literal notranslate"><span class="pre">LMS_Pub.get_pubkey()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lms.LMS_Pub.info"><code class="docutils literal notranslate"><span class="pre">LMS_Pub.info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lms.LMS_Pub.verify"><code class="docutils literal notranslate"><span class="pre">LMS_Pub.verify()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hsslms.html#module-hsslms.pershss">hsslms.pershss module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.pershss.PersHSS_Priv"><code class="docutils literal notranslate"><span class="pre">PersHSS_Priv</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.pershss.PersHSS_Priv.FILEHEADER"><code class="docutils literal notranslate"><span class="pre">PersHSS_Priv.FILEHEADER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.pershss.PersHSS_Priv.from_file"><code class="docutils literal notranslate"><span class="pre">PersHSS_Priv.from_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.pershss.PersHSS_Priv.save"><code class="docutils literal notranslate"><span class="pre">PersHSS_Priv.save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.pershss.PersHSS_Priv.sign"><code class="docutils literal notranslate"><span class="pre">PersHSS_Priv.sign()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.pershss.kdf"><code class="docutils literal notranslate"><span class="pre">kdf()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hsslms.html#module-hsslms.restricted_unpickler">hsslms.restricted_unpickler module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.restricted_unpickler.RestrictedUnpickler"><code class="docutils literal notranslate"><span class="pre">RestrictedUnpickler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.restricted_unpickler.RestrictedUnpickler.find_class"><code class="docutils literal notranslate"><span class="pre">RestrictedUnpickler.find_class()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.restricted_unpickler.restricted_loads"><code class="docutils literal notranslate"><span class="pre">restricted_loads()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hsslms.html#module-hsslms.utils">hsslms.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.utils.FAILURE"><code class="docutils literal notranslate"><span class="pre">FAILURE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.utils.INVALID"><code class="docutils literal notranslate"><span class="pre">INVALID</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE.H"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.H</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE.n"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.n</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE.w"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.w</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE.p"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.p</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE.ls"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.ls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id0"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.H</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W1"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W2"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W4"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W4</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W8"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W8</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W1"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W4"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W4</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W8"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W8</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id1"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.ls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id2"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.n</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id3"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.p</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id4"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.w</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE.H"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.H</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE.m"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.m</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE.h"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.h</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id5"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.H</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H10"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H10</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H15"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H15</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H20"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H20</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H25"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H25</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H5"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H5</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H20"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H20</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H25"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H25</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H5"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H5</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id6"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.h</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id7"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.m</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.utils.cksm"><code class="docutils literal notranslate"><span class="pre">cksm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.utils.coef"><code class="docutils literal notranslate"><span class="pre">coef()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.utils.strTou32"><code class="docutils literal notranslate"><span class="pre">strTou32()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.utils.u16str"><code class="docutils literal notranslate"><span class="pre">u16str()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.utils.u32str"><code class="docutils literal notranslate"><span class="pre">u32str()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.utils.u8str"><code class="docutils literal notranslate"><span class="pre">u8str()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hsslms.html#hsslms-lmswrapper-module">hsslms.lmswrapper module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.lmswrapper.LMS_Wrapper_Priv"><code class="docutils literal notranslate"><span class="pre">LMS_Wrapper_Priv</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lmswrapper.LMS_Wrapper_Priv.FILEHEADER"><code class="docutils literal notranslate"><span class="pre">LMS_Wrapper_Priv.FILEHEADER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lmswrapper.LMS_Wrapper_Priv.from_file"><code class="docutils literal notranslate"><span class="pre">LMS_Wrapper_Priv.from_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lmswrapper.LMS_Wrapper_Priv.save"><code class="docutils literal notranslate"><span class="pre">LMS_Wrapper_Priv.save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lmswrapper.LMS_Wrapper_Priv.sign"><code class="docutils literal notranslate"><span class="pre">LMS_Wrapper_Priv.sign()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.lmswrapper.LMS_Wrapper_Priv.verify"><code class="docutils literal notranslate"><span class="pre">LMS_Wrapper_Priv.verify()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.lmswrapper.kdf"><code class="docutils literal notranslate"><span class="pre">kdf()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hsslms.html#module-hsslms">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.FAILURE"><code class="docutils literal notranslate"><span class="pre">FAILURE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.HSS_Priv"><code class="docutils literal notranslate"><span class="pre">HSS_Priv</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.HSS_Priv.gen_pub"><code class="docutils literal notranslate"><span class="pre">HSS_Priv.gen_pub()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.HSS_Priv.get_avail_signatures"><code class="docutils literal notranslate"><span class="pre">HSS_Priv.get_avail_signatures()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.HSS_Priv.info"><code class="docutils literal notranslate"><span class="pre">HSS_Priv.info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.HSS_Priv.sign"><code class="docutils literal notranslate"><span class="pre">HSS_Priv.sign()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.HSS_Pub"><code class="docutils literal notranslate"><span class="pre">HSS_Pub</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.HSS_Pub.get_pubkey"><code class="docutils literal notranslate"><span class="pre">HSS_Pub.get_pubkey()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.HSS_Pub.info"><code class="docutils literal notranslate"><span class="pre">HSS_Pub.info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.HSS_Pub.verify"><code class="docutils literal notranslate"><span class="pre">HSS_Pub.verify()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.INVALID"><code class="docutils literal notranslate"><span class="pre">INVALID</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.LMOTS_ALGORITHM_TYPE"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMOTS_ALGORITHM_TYPE.H"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.H</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMOTS_ALGORITHM_TYPE.n"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.n</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMOTS_ALGORITHM_TYPE.w"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.w</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMOTS_ALGORITHM_TYPE.p"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.p</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMOTS_ALGORITHM_TYPE.ls"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.ls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id8"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.H</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W1"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W2"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W4"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W4</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W8"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N24_W8</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W1"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W4"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W4</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W8"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.LMOTS_SHA256_N32_W8</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id9"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.ls</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id10"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.n</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id11"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.p</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id12"><code class="docutils literal notranslate"><span class="pre">LMOTS_ALGORITHM_TYPE.w</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.LMS_ALGORITHM_TYPE"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_ALGORITHM_TYPE.H"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.H</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_ALGORITHM_TYPE.m"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.m</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_ALGORITHM_TYPE.h"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.h</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id13"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.H</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H10"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H10</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H15"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H15</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H20"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H20</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H25"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H25</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H5"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M24_H5</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H10</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H15</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H20"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H20</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H25"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H25</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H5"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.LMS_SHA256_M32_H5</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id14"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.h</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#id15"><code class="docutils literal notranslate"><span class="pre">LMS_ALGORITHM_TYPE.m</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.LMS_Priv"><code class="docutils literal notranslate"><span class="pre">LMS_Priv</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_Priv.gen_pub"><code class="docutils literal notranslate"><span class="pre">LMS_Priv.gen_pub()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_Priv.get_avail_signatures"><code class="docutils literal notranslate"><span class="pre">LMS_Priv.get_avail_signatures()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_Priv.sign"><code class="docutils literal notranslate"><span class="pre">LMS_Priv.sign()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.LMS_Pub"><code class="docutils literal notranslate"><span class="pre">LMS_Pub</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_Pub.get_pubkey"><code class="docutils literal notranslate"><span class="pre">LMS_Pub.get_pubkey()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_Pub.info"><code class="docutils literal notranslate"><span class="pre">LMS_Pub.info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LMS_Pub.verify"><code class="docutils literal notranslate"><span class="pre">LMS_Pub.verify()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.LM_OTS_Priv"><code class="docutils literal notranslate"><span class="pre">LM_OTS_Priv</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LM_OTS_Priv.gen_pub"><code class="docutils literal notranslate"><span class="pre">LM_OTS_Priv.gen_pub()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LM_OTS_Priv.gen_pub_K"><code class="docutils literal notranslate"><span class="pre">LM_OTS_Priv.gen_pub_K()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LM_OTS_Priv.sign"><code class="docutils literal notranslate"><span class="pre">LM_OTS_Priv.sign()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.LM_OTS_Pub"><code class="docutils literal notranslate"><span class="pre">LM_OTS_Pub</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.LM_OTS_Pub.verify"><code class="docutils literal notranslate"><span class="pre">LM_OTS_Pub.verify()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hsslms.html#hsslms.PersHSS_Priv"><code class="docutils literal notranslate"><span class="pre">PersHSS_Priv</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.PersHSS_Priv.FILEHEADER"><code class="docutils literal notranslate"><span class="pre">PersHSS_Priv.FILEHEADER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.PersHSS_Priv.from_file"><code class="docutils literal notranslate"><span class="pre">PersHSS_Priv.from_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.PersHSS_Priv.save"><code class="docutils literal notranslate"><span class="pre">PersHSS_Priv.save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hsslms.html#hsslms.PersHSS_Priv.sign"><code class="docutils literal notranslate"><span class="pre">PersHSS_Priv.sign()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </div>
-</div>
+</section>
 
 
            </div>

@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hsslms.lmots &mdash; HssLms 0.1.0 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>hsslms.lmots &mdash; HssLms 0.1.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -24,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> HssLms
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HssLms
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -52,9 +59,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>hsslms.lmots</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">hsslms.lmots</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -78,7 +85,7 @@
 
 
 <div class="viewcode-block" id="LM_OTS_Pub"><a class="viewcode-back" href="../../hsslms.html#hsslms.lmots.LM_OTS_Pub">[docs]</a><span class="k">class</span> <span class="nc">LM_OTS_Pub</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;A class used to hold the public key of LM-OTS One-Time Signatures (LMOTS)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class used to hold the public key of LM-OTS One-Time Signatures (LMOTS)</span>
 <span class="sd">    </span>
 <span class="sd">    For a reference see RFC 8554, section 4.</span>
 
@@ -124,20 +131,20 @@
                 <span class="k">raise</span> <span class="n">FAILURE</span><span class="p">(</span><span class="s2">&quot;Error. Cannot read message.&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">FAILURE</span><span class="p">(</span><span class="s2">&quot;Invalid message type.&quot;</span><span class="p">)</span>
-        <span class="n">Q</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+        <span class="n">Q</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">digest</span><span class="p">()[:</span><span class="n">n</span><span class="p">]</span>
         <span class="n">Qa</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">+</span> <span class="n">cksm</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">ls</span><span class="p">)</span>
         <span class="n">Kc</span> <span class="o">=</span> <span class="n">H</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">+</span> <span class="n">D_PBLC</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
             <span class="n">a</span> <span class="o">=</span> <span class="n">coef</span><span class="p">(</span><span class="n">Qa</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
             <span class="n">tmp</span> <span class="o">=</span> <span class="n">signature</span><span class="p">[</span><span class="mi">4</span><span class="o">+</span><span class="n">n</span><span class="o">+</span><span class="n">i</span><span class="o">*</span><span class="n">n</span> <span class="p">:</span> <span class="mi">4</span><span class="o">+</span><span class="n">n</span><span class="o">+</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">]</span>  <span class="c1"># y[i]</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="n">w</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-                <span class="n">tmp</span> <span class="o">=</span> <span class="n">H</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">+</span> <span class="n">u16str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">u8str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="n">tmp</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">H</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">+</span> <span class="n">u16str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">u8str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="n">tmp</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()[:</span><span class="n">n</span><span class="p">]</span>
             <span class="n">Kc</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>  <span class="c1"># z</span>
-        <span class="k">return</span> <span class="n">Kc</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>  <span class="c1"># Kc</span>
+        <span class="k">return</span> <span class="n">Kc</span><span class="o">.</span><span class="n">digest</span><span class="p">()[:</span><span class="n">n</span><span class="p">]</span>  <span class="c1"># Kc</span>
         
     
 <div class="viewcode-block" id="LM_OTS_Pub.verify"><a class="viewcode-back" href="../../hsslms.html#hsslms.lmots.LM_OTS_Pub.verify">[docs]</a>    <span class="k">def</span> <span class="nf">verify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">signature</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Signature Verification of LMOTS</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Signature Verification of LMOTS</span>
 <span class="sd">        </span>
 <span class="sd">        Tries to verify the signature of a message with the public key associated</span>
 <span class="sd">        with the class.</span>
@@ -158,7 +165,7 @@
 
         
 <div class="viewcode-block" id="LM_OTS_Priv"><a class="viewcode-back" href="../../hsslms.html#hsslms.lmots.LM_OTS_Priv">[docs]</a><span class="k">class</span> <span class="nc">LM_OTS_Priv</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;A class used to hold the private key of LM-OTS One-Time Signatures (LMOTS)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class used to hold the private key of LM-OTS One-Time Signatures (LMOTS)</span>
 <span class="sd">    </span>
 <span class="sd">    For a reference see RFC 8554, section 4.</span>
 <span class="sd">    </span>
@@ -176,11 +183,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">=</span> <span class="n">q</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ls</span> <span class="o">=</span> <span class="n">typecode</span><span class="o">.</span><span class="n">H</span><span class="p">,</span> <span class="n">typecode</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">typecode</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">typecode</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="n">typecode</span><span class="o">.</span><span class="n">ls</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">typecode</span> <span class="o">=</span> <span class="n">u32str</span><span class="p">(</span><span class="n">typecode</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="p">)</span> <span class="o">+</span> <span class="n">u16str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xff</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">SEED</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="p">)</span> <span class="o">+</span> <span class="n">u16str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xff</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">SEED</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()[:</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">used</span> <span class="o">=</span> <span class="kc">False</span>
 
 <div class="viewcode-block" id="LM_OTS_Priv.sign"><a class="viewcode-back" href="../../hsslms.html#hsslms.lmots.LM_OTS_Priv.sign">[docs]</a>    <span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Signature Generation of LMOTS</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Signature Generation of LMOTS</span>
 <span class="sd">        </span>
 <span class="sd">        Signs a message with the private key associated with the class.</span>
 <span class="sd">        </span>
@@ -213,13 +220,13 @@
                 <span class="k">raise</span> <span class="n">FAILURE</span><span class="p">(</span><span class="s2">&quot;Error. Cannot read message.&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">FAILURE</span><span class="p">(</span><span class="s2">&quot;Invalid message type.&quot;</span><span class="p">)</span>
-        <span class="n">Q</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+        <span class="n">Q</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">digest</span><span class="p">()[:</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">]</span>
         <span class="n">Qa</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">+</span> <span class="n">cksm</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ls</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">):</span>
             <span class="n">a</span> <span class="o">=</span> <span class="n">coef</span><span class="p">(</span><span class="n">Qa</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
             <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-                <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="p">)</span> <span class="o">+</span> <span class="n">u16str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">u8str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="n">tmp</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">q</span><span class="p">)</span> <span class="o">+</span> <span class="n">u16str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">u8str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="n">tmp</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()[:</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">]</span>
             <span class="n">signature</span> <span class="o">+=</span> <span class="n">tmp</span>  <span class="c1"># y</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">used</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="n">signature</span></div>
@@ -232,12 +239,12 @@
             <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="n">Iqi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str_q</span> <span class="o">+</span> <span class="n">u16str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">u8str_j</span><span class="p">:</span>
-                <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="n">Iqi</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="n">tmp</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="n">Iqi</span> <span class="o">+</span> <span class="n">j</span> <span class="o">+</span> <span class="n">tmp</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()[:</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">]</span>
             <span class="n">K</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">K</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="n">K</span><span class="o">.</span><span class="n">digest</span><span class="p">()[:</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">]</span></div>
     
 <div class="viewcode-block" id="LM_OTS_Priv.gen_pub"><a class="viewcode-back" href="../../hsslms.html#hsslms.lmots.LM_OTS_Priv.gen_pub">[docs]</a>    <span class="k">def</span> <span class="nf">gen_pub</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Computes the public key associated with the private key in this class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the public key associated with the private key in this class.</span>
 <span class="sd">        </span>
 <span class="sd">        Returns:</span>
 <span class="sd">            LM_OTS_Pub: The public key belonging to this private key.</span>

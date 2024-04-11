@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hsslms.lms &mdash; HssLms 0.1.0 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>hsslms.lms &mdash; HssLms 0.1.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -24,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> HssLms
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HssLms
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -52,9 +59,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>hsslms.lms</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">hsslms.lms</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -80,7 +87,7 @@
 
 
 <div class="viewcode-block" id="LMS_Pub"><a class="viewcode-back" href="../../hsslms.html#hsslms.lms.LMS_Pub">[docs]</a><span class="k">class</span> <span class="nc">LMS_Pub</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;A class used to hold the public key of Leighton-Micali Signatures (LMS)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class used to hold the public key of Leighton-Micali Signatures (LMS)</span>
 <span class="sd">    </span>
 <span class="sd">    For a reference see RFC 8554, section 5.</span>
 
@@ -109,7 +116,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pubkey</span> <span class="o">=</span> <span class="n">pubkey</span>
         
     <span class="k">def</span> <span class="nf">_len_pubkey</span><span class="p">(</span><span class="n">pubkey</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Computes the correct length of a given public key</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the correct length of a given public key</span>
 <span class="sd">        </span>
 <span class="sd">        Args:</span>
 <span class="sd">            pubkey (bytes): Representation of a public key</span>
@@ -146,20 +153,20 @@
         <span class="n">OTS_PUB</span> <span class="o">=</span> <span class="n">LM_OTS_Pub</span><span class="p">(</span><span class="n">lmots_signature</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>  <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
         <span class="n">Kc</span> <span class="o">=</span> <span class="n">OTS_PUB</span><span class="o">.</span><span class="n">_algo4b</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">lmots_signature</span><span class="p">)</span>
         <span class="n">node_num</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">+</span> <span class="n">q</span>
-        <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="n">node_num</span><span class="p">)</span> <span class="o">+</span> <span class="n">D_LEAF</span> <span class="o">+</span> <span class="n">Kc</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="n">node_num</span><span class="p">)</span> <span class="o">+</span> <span class="n">D_LEAF</span> <span class="o">+</span> <span class="n">Kc</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()[:</span><span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">]</span>
         <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">while</span> <span class="n">node_num</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">path</span> <span class="o">=</span> <span class="n">signature</span><span class="p">[</span><span class="mi">12</span><span class="o">+</span><span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">i</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">:</span><span class="mi">12</span><span class="o">+</span><span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">node_num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="n">node_num</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">D_INTR</span> <span class="o">+</span> <span class="n">path</span> <span class="o">+</span> <span class="n">tmp</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="n">node_num</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">D_INTR</span> <span class="o">+</span> <span class="n">path</span> <span class="o">+</span> <span class="n">tmp</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()[:</span><span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="n">node_num</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">D_INTR</span> <span class="o">+</span> <span class="n">tmp</span> <span class="o">+</span> <span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="n">node_num</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">D_INTR</span> <span class="o">+</span> <span class="n">tmp</span> <span class="o">+</span> <span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()[:</span><span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">]</span>
             <span class="n">node_num</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span>
             <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="n">tmp</span>  <span class="c1"># Tc</span>
         
 <div class="viewcode-block" id="LMS_Pub.verify"><a class="viewcode-back" href="../../hsslms.html#hsslms.lms.LMS_Pub.verify">[docs]</a>    <span class="k">def</span> <span class="nf">verify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">signature</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Signature Verification of LMS</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Signature Verification of LMS</span>
 
 <span class="sd">        Tries to verify the signature of a message with the public key associated</span>
 <span class="sd">        with the class.</span>
@@ -176,7 +183,7 @@
             <span class="k">raise</span> <span class="n">INVALID</span></div>
             
     <span class="k">def</span> <span class="nf">_len_signature</span><span class="p">(</span><span class="n">signature</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Computes the correct length of a signature in an even longer byte string</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the correct length of a signature in an even longer byte string</span>
 <span class="sd">        </span>
 <span class="sd">        Args:</span>
 <span class="sd">            signature (bytes): Signature embedded in an even longer byte string.</span>
@@ -203,13 +210,13 @@
     
 <div class="viewcode-block" id="LMS_Pub.info"><a class="viewcode-back" href="../../hsslms.html#hsslms.lms.LMS_Pub.info">[docs]</a>    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
-<span class="s2">lmotstype = </span><span class="si">{self.otspubtype.name}</span><span class="s2"></span>
-<span class="s2">lmstype = </span><span class="si">{self.pubtype.name}</span><span class="s2"></span>
+<span class="s2">lmotstype = </span><span class="si">{self.otspubtype.name}</span>
+<span class="s2">lmstype = </span><span class="si">{self.pubtype.name}</span>
 <span class="s2">&quot;&quot;&quot;</span></div></div>
         
 
 <div class="viewcode-block" id="LMS_Priv"><a class="viewcode-back" href="../../hsslms.html#hsslms.lms.LMS_Priv">[docs]</a><span class="k">class</span> <span class="nc">LMS_Priv</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;A class used to hold the private key of Leighton-Micali Signatures (LMS)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class used to hold the private key of Leighton-Micali Signatures (LMS)</span>
 <span class="sd">    </span>
 <span class="sd">    For a reference see RFC 8554, section 5.</span>
 <span class="sd">    </span>
@@ -222,9 +229,9 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">_calc_leafs</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">otstypecode</span><span class="p">,</span> <span class="n">SEED</span><span class="p">):</span>
         <span class="n">OTS_PRIV</span> <span class="o">=</span> <span class="n">LM_OTS_Priv</span><span class="p">(</span><span class="n">otstypecode</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">r</span><span class="o">-</span><span class="mi">2</span><span class="o">**</span><span class="n">h</span><span class="p">,</span> <span class="n">SEED</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">H</span><span class="p">(</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="n">D_LEAF</span> <span class="o">+</span> <span class="n">OTS_PRIV</span><span class="o">.</span><span class="n">gen_pub_K</span><span class="p">())</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">_calc_knots</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">Tl</span><span class="p">,</span> <span class="n">Tr</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">H</span><span class="p">(</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="n">D_INTR</span> <span class="o">+</span> <span class="n">Tl</span> <span class="o">+</span> <span class="n">Tr</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">H</span><span class="p">(</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="n">D_LEAF</span> <span class="o">+</span> <span class="n">OTS_PRIV</span><span class="o">.</span><span class="n">gen_pub_K</span><span class="p">())</span><span class="o">.</span><span class="n">digest</span><span class="p">()[:</span><span class="n">otstypecode</span><span class="o">.</span><span class="n">n</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">_calc_knots</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">Tl</span><span class="p">,</span> <span class="n">Tr</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">H</span><span class="p">(</span><span class="n">I</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">+</span> <span class="n">D_INTR</span> <span class="o">+</span> <span class="n">Tl</span> <span class="o">+</span> <span class="n">Tr</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">()[:</span><span class="n">m</span><span class="p">]</span>
     
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">typecode</span><span class="p">,</span> <span class="n">otstypecode</span><span class="p">,</span> <span class="n">num_cores</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">num_cores</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -238,11 +245,11 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">2</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="p">:</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">starmap</span><span class="p">(</span><span class="n">LMS_Priv</span><span class="o">.</span><span class="n">_calc_leafs</span><span class="p">,</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">I</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">otstypecode</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">SEED</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="o">+</span><span class="mi">1</span><span class="p">))))</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">2</span><span class="o">**</span><span class="n">i</span> <span class="p">:</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">starmap</span><span class="p">(</span><span class="n">LMS_Priv</span><span class="o">.</span><span class="n">_calc_knots</span><span class="p">,</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">I</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">2</span><span class="o">**</span><span class="n">i</span> <span class="p">:</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">starmap</span><span class="p">(</span><span class="n">LMS_Priv</span><span class="o">.</span><span class="n">_calc_knots</span><span class="p">,</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">H</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">I</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">q</span> <span class="o">=</span> <span class="mi">0</span>
         
 <div class="viewcode-block" id="LMS_Priv.sign"><a class="viewcode-back" href="../../hsslms.html#hsslms.lms.LMS_Priv.sign">[docs]</a>    <span class="k">def</span> <span class="nf">sign</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Signature Generation of LMS</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Signature Generation of LMS</span>
 <span class="sd">        </span>
 <span class="sd">        Signs a message with the private key associated with the class.</span>
 <span class="sd">        </span>
@@ -268,7 +275,7 @@
         <span class="k">return</span> <span class="n">signature</span></div>
         
 <div class="viewcode-block" id="LMS_Priv.gen_pub"><a class="viewcode-back" href="../../hsslms.html#hsslms.lms.LMS_Priv.gen_pub">[docs]</a>    <span class="k">def</span> <span class="nf">gen_pub</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Computes the public key associated with the private key in this class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the public key associated with the private key in this class.</span>
 <span class="sd">        </span>
 <span class="sd">        Returns:</span>
 <span class="sd">            LMS_Pub: The public key belonging to this private key.</span>
@@ -276,7 +283,7 @@
         <span class="k">return</span> <span class="n">LMS_Pub</span><span class="p">(</span><span class="n">u32str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">typecode</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="n">u32str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">otstypecode</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
     
 <div class="viewcode-block" id="LMS_Priv.get_avail_signatures"><a class="viewcode-back" href="../../hsslms.html#hsslms.lms.LMS_Priv.get_avail_signatures">[docs]</a>    <span class="k">def</span> <span class="nf">get_avail_signatures</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Computes the numbers of availalbe signatures.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the numbers of availalbe signatures.</span>
 <span class="sd">        </span>
 <span class="sd">        Every invokation of the &#39;sign&#39;-Method reduces this number by one.</span>
 <span class="sd">        </span>

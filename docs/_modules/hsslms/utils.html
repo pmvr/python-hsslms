@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hsslms.utils &mdash; HssLms 0.1.0 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>hsslms.utils &mdash; HssLms 0.1.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -24,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> HssLms
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            HssLms
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -52,9 +59,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>hsslms.utils</li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">hsslms.utils</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -75,11 +82,11 @@
 <span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha256</span>
 
 <div class="viewcode-block" id="INVALID"><a class="viewcode-back" href="../../hsslms.html#hsslms.utils.INVALID">[docs]</a><span class="k">class</span> <span class="nc">INVALID</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Exception for an invalid signature.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exception for an invalid signature.&quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="FAILURE"><a class="viewcode-back" href="../../hsslms.html#hsslms.utils.FAILURE">[docs]</a><span class="k">class</span> <span class="nc">FAILURE</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Exception for general technical failures , e.g. if no private key is left to sign.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exception for general technical failures , e.g. if no private key is left to sign.&quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="u32str"><a class="viewcode-back" href="../../hsslms.html#hsslms.utils.u32str">[docs]</a><span class="k">def</span> <span class="nf">u32str</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
@@ -108,7 +115,7 @@
 
 
 <div class="viewcode-block" id="LMOTS_ALGORITHM_TYPE"><a class="viewcode-back" href="../../hsslms.html#hsslms.utils.LMOTS_ALGORITHM_TYPE">[docs]</a><span class="k">class</span> <span class="nc">LMOTS_ALGORITHM_TYPE</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types, see rfc8554.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enumeration of Leighton-Micali One-Time-Signatures (LMOTS) algorithm types, see rfc8554.</span>
 <span class="sd">    </span>
 <span class="sd">    Attributes:</span>
 <span class="sd">        H: Hashfunction</span>
@@ -121,25 +128,34 @@
     <span class="n">LMOTS_SHA256_N32_W2</span>  <span class="o">=</span> <span class="mi">2</span>
     <span class="n">LMOTS_SHA256_N32_W4</span>  <span class="o">=</span> <span class="mi">3</span>
     <span class="n">LMOTS_SHA256_N32_W8</span>  <span class="o">=</span> <span class="mi">4</span>
+    
+    <span class="n">LMOTS_SHA256_N24_W1</span>  <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">LMOTS_SHA256_N24_W2</span>  <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">LMOTS_SHA256_N24_W4</span>  <span class="o">=</span> <span class="mi">7</span>
+    <span class="n">LMOTS_SHA256_N24_W8</span>  <span class="o">=</span> <span class="mi">8</span>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">H</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">sha256</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">n</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="mi">32</span>
+        <span class="k">if</span> <span class="s1">&#39;N32&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">32</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">24</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">w</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">8</span><span class="p">}[</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span><span class="mi">8</span><span class="p">}[</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">p</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">265</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">133</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">67</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">34</span><span class="p">}[</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">265</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">133</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">67</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">34</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span><span class="mi">101</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span><span class="mi">51</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span><span class="mi">26</span><span class="p">}[</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">}[</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span><span class="mi">0</span><span class="p">}[</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="LMS_ALGORITHM_TYPE"><a class="viewcode-back" href="../../hsslms.html#hsslms.utils.LMS_ALGORITHM_TYPE">[docs]</a><span class="k">class</span> <span class="nc">LMS_ALGORITHM_TYPE</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Enumeration of Leighton-Micali Signatures (LMS) algorithm types, see rfc8554.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enumeration of Leighton-Micali Signatures (LMS) algorithm types, see rfc8554.</span>
 <span class="sd">    </span>
 <span class="sd">    Attributes:</span>
 <span class="sd">        H: Hashfunction</span>
@@ -151,15 +167,26 @@
     <span class="n">LMS_SHA256_M32_H15</span> <span class="o">=</span> <span class="mi">7</span>
     <span class="n">LMS_SHA256_M32_H20</span> <span class="o">=</span> <span class="mi">8</span>
     <span class="n">LMS_SHA256_M32_H25</span> <span class="o">=</span> <span class="mi">9</span>
+
+    <span class="n">LMS_SHA256_M24_H5</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">LMS_SHA256_M24_H10</span> <span class="o">=</span> <span class="mi">11</span>
+    <span class="n">LMS_SHA256_M24_H15</span> <span class="o">=</span> <span class="mi">12</span>
+    <span class="n">LMS_SHA256_M24_H20</span> <span class="o">=</span> <span class="mi">13</span>
+    <span class="n">LMS_SHA256_M24_H25</span> <span class="o">=</span> <span class="mi">14</span>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">H</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">sha256</span>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">m</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="mi">32</span>
+        <span class="k">if</span> <span class="s1">&#39;M32&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">32</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">24</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span><span class="mi">25</span><span class="p">}[</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">]</span></div>
+        <span class="k">return</span> <span class="p">{</span><span class="mi">5</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span><span class="mi">25</span><span class="p">}[</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">]</span></div>
 </pre></div>
 
            </div>

@@ -5,11 +5,12 @@ This is an implementation of Leighton-Micali Hash-Based Signatures in Python acc
 
 The implementation is meant as a reference and for educational purposes.
 
-The module  :py:mod:`hsslms` provides 4 classes:
+The module  :py:mod:`hsslms` provides 5 classes:
  * :py:mod:`hsslms.lmots`: LM-OTS One-Time Signatures. These are one-time signatures; each private key MUST be used at most one time to sign a message.
  * :py:mod:`hsslms.lms`: Leighton-Micali Signatures (LMS). This system holds a fixed number of one-time signatures, i.e. LM-OTS.
  * :py:mod:`hsslms.hss`: Hierarchical Signatures (HSS). This system uses a sequence of LMS.
  * :py:mod:`hsslms.pershss`: Persistent Hierarchical Signatures (PersHSS). The same as HSS except that the private key is stored in an encrypted file.
+ * :py:mod:`hsslms.lmswrapper`: LMS_Wrapper_Priv. Generates a private key and derives the public key of a LMS signature system.  The private key is signed and stored in an encrypted file.
 
 
 Example Usage
