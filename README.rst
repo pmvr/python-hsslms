@@ -76,7 +76,7 @@ HSS
 Performance Measurements
 ------------------------
 
-The measurements are done on a Ryzen 5800X, where multiprocessing
+The measurements are done on a Ryzen 5600X, where multiprocessing
 features are used with 6 cores.
 
 Key Generation
